@@ -1,6 +1,8 @@
-# K-PaaS
+# 국민체육진흥공단 공공데이터 활용 경진대회
 
-K-PaaS 공모전 출품작 개발
+공모전 출품작
+
+# GOWO : Go Out Work Out Project
 
 
 
