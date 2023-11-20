@@ -1,9 +1,9 @@
-package dev.gowo.gowo.sevice.impl;
+package dev.gowo.gowo.service.impl;
 
 
 import dev.gowo.gowo.dao.PrescriptionGuideDAO;
 import dev.gowo.gowo.entity.PrescriptionGuideEntity;
-import dev.gowo.gowo.sevice.PrescriptionGuideService;
+import dev.gowo.gowo.service.PrescriptionGuideService;
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

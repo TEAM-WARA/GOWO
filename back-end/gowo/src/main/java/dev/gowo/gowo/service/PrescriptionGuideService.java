@@ -1,4 +1,4 @@
-package dev.gowo.gowo.sevice;
+package dev.gowo.gowo.service;
 
 import java.net.URISyntaxException;
 
