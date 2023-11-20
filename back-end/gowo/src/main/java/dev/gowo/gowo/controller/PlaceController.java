@@ -30,7 +30,11 @@ public class PlaceController {
     public ResponseEntity<List<PrescriptionGuideDTO>> getByPlaceName(
             @RequestParam("place") String place
     ){
+<<<<<<< HEAD
         return this.placeService.getByPlaceName(place);
+=======
+        return this.getByPlaceName(place);
+>>>>>>> 7958d1e (🚧 디비 컬럼명 수정해야 함 비상!)
     }
 
 
