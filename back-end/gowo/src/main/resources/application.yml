@@ -2,7 +2,7 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
   datasource:
     url: jdbc:mariadb://svc.sel5.cloudtype.app:30261/gowo?createDatabaseIfNotExist=true
     username: root
