@@ -22,29 +22,29 @@ public class PurposeRoutineEntity {
     private Long id;
 
     // 운동명
-    private String trng_nm;
+    private String workOutName;
 
     // 운동 설명
-    private String vdo_desc;
+    private String workOutDescription;
 
     // 썸네일
-    private String thumbnail;
+    private String imageUrl;
 
     // 동영상 제목
-    private String vdo_ttl_nm;
+    private String videoName;
 
     // 장면 전환 재생 시간
-    private Double snap_tm;
-
+    private Double startTime;
     // 동영상 주소
-    private String video_url;
+
+    private String videoUrl;
 
     // 운동 부위
-    private String trng_part_nm;
-
-    // 운동 목적
-    private String ftns_fctr_nm;
+    private String workOutArea;
 
     // 운동 구분
-    private String trng_se_nm;
+    private String workOutDivision;
+
+    // 운동 목적
+    private String workOutPurpose;
 }

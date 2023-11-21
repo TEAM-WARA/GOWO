@@ -3,10 +3,12 @@ package dev.gowo.gowo.controller;
 import dev.gowo.gowo.service.impl.PurposeRoutineServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.net.URISyntaxException;
 
 @RestController
+@RequestMapping("/pr")
 public class PurposeRoutineController {
     private final PurposeRoutineServiceImpl purposeRoutineServiceImpl;
 

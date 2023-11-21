@@ -57,15 +57,15 @@ public class PurposeRoutineServiceImpl implements PurposeRoutineService {
                     LinkedHashMap<?, ?> workout = (LinkedHashMap<?, ?>) work;
 
                     PurposeRoutineEntity entity = PurposeRoutineEntity.builder()
-                            .trng_nm((String) workout.get("trng_nm"))
-                            .vdo_desc((String) workout.get("vdo_desc"))
-                            .thumbnail(((String) workout.get("img_file_url")) + ((String) workout.get("img_file_nm")))
-                            .vdo_ttl_nm((String) workout.get("vdo_ttl_nm"))
-                            .snap_tm(Double.valueOf(String.valueOf(workout.get("snap_tm"))))
-                            .video_url(((String) workout.get("file_url")) + ((String) workout.get("file_nm")))
-                            .trng_part_nm((String) workout.get("trng_part_nm"))
-                            .ftns_fctr_nm((String) workout.get("ftns_fctr_nm"))
-                            .trng_se_nm((String) workout.get("trng_se_nm"))
+                            .workOutName((String) workout.get("trng_nm"))
+                            .workOutDescription((String) workout.get("vdo_desc"))
+                            .imageUrl(((String) workout.get("img_file_url")) + ((String) workout.get("img_file_nm")))
+                            .videoName((String) workout.get("vdo_ttl_nm"))
+                            .startTime(Double.valueOf(String.valueOf(workout.get("snap_tm"))))
+                            .videoUrl(((String) workout.get("file_url")) + ((String) workout.get("file_nm")))
+                            .workOutArea((String) workout.get("trng_part_nm"))
+                            .workOutPurpose((String) workout.get("ftns_fctr_nm"))
+                            .workOutDivision((String) workout.get("trng_se_nm"))
                             .build();
                     purposeRoutineDao.createPurposeRoutine(entity);
                 }
