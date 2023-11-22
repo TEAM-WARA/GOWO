@@ -12,4 +12,7 @@ public interface PurposeRoutineRepository extends JpaRepository<PurposeRoutineEn
     List<PurposeRoutineEntity> findByWorkOutArea(String workOutArea);
     List<PurposeRoutineEntity> findByWorkOutDivision(String workOutDivision);
     List<PurposeRoutineEntity> findByWorkOutPurpose(String workOutPurpose);
+
+    @Query("SELECT p.workOutArea FROM PurposeRoutineEntity p GROUP BY p.workOutArea")
+    List<String> findDistinctWorkOutArea();
 }

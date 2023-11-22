@@ -1,5 +1,6 @@
 package dev.gowo.gowo.controller;
 
+import dev.gowo.gowo.dto.AreaResponseDTO;
 import dev.gowo.gowo.dto.PurposeRoutineDTO;
 import dev.gowo.gowo.service.AreaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +23,10 @@ public class AreaController {
     @GetMapping("/read/{area}")
     public List<PurposeRoutineDTO> readByArea(@PathVariable String area){
         return areaService.readByArea(area);
+    }
+
+    @GetMapping("/category")
+    public AreaResponseDTO readByDistinctAreas(){
+        return areaService.readByDistinctAreas();
     }
 }

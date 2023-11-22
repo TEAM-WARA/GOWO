@@ -1,6 +1,7 @@
 package dev.gowo.gowo.service.impl;
 
 import dev.gowo.gowo.dao.PurposeRoutineDAO;
+import dev.gowo.gowo.dto.AreaResponseDTO;
 import dev.gowo.gowo.dto.PurposeRoutineDTO;
 import dev.gowo.gowo.entity.PurposeRoutineEntity;
 import dev.gowo.gowo.service.AreaService;
@@ -22,6 +23,15 @@ public class AreaServiceImpl implements AreaService {
     public List<PurposeRoutineDTO> readByArea(String area) {
         List<PurposeRoutineEntity> entities = purposeRoutineDAO.readByArea(area);
         return toDTOList(entities);
+    }
+
+    @Override
+    public AreaResponseDTO readByDistinctAreas() {
+        List<String> areas = purposeRoutineDAO.readByDistinctAreas();
+        AreaResponseDTO areaResponseDTO = AreaResponseDTO.builder()
+                .area(areas)
+                .build();
+        return areaResponseDTO;
     }
 
     public List<PurposeRoutineDTO> toDTOList(List<PurposeRoutineEntity> entities){

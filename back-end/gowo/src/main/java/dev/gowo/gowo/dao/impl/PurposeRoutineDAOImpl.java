@@ -35,4 +35,9 @@ public class PurposeRoutineDAOImpl implements PurposeRoutineDAO {
     public List<PurposeRoutineEntity> readByArea(String area) {
         return purposeRoutineRepository.findByWorkOutArea(area);
     }
+
+    @Override
+    public List<String> readByDistinctAreas() {
+        return purposeRoutineRepository.findDistinctWorkOutArea();
+    }
 }
