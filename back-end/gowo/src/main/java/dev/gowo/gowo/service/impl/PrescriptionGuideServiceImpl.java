@@ -65,15 +65,15 @@ public class PrescriptionGuideServiceImpl implements PrescriptionGuideService {
                 LinkedHashMap<?, ?> workout = (LinkedHashMap<?, ?>) work;
                 //logger.info(workout.toString());
                 PrescriptionGuideEntity entity = PrescriptionGuideEntity.builder()
-                        .trng_nm((String) workout.get("trng_nm"))
-                        .vdo_desc((String) workout.get("vdo_desc"))
-                        .thumbnail(workout.get("img_file_url").toString() + workout.get("img_file_nm").toString())
-                        .vdo_ttl_nm((String) workout.get("vdo_ttl_nm"))
-                        .snap_tm((Double) workout.get("snap_tm"))
-                        .video_url(workout.get("file_url").toString() + workout.get("file_nm").toString())
-                        .tool_nm((String) workout.get("tool_nm"))
-                        .trng_plc_nm((String) workout.get("trng_plc_nm"))
-                        .ftns_fctr_nm((String) workout.get("ftns_fctr_nm"))
+                        .workOutName((String) workout.get("trng_nm"))
+                        .workOutDescription((String) workout.get("vdo_desc"))
+                        .imageUrl(workout.get("img_file_url").toString() + workout.get("img_file_nm").toString())
+                        .videoName((String) workout.get("vdo_ttl_nm"))
+                        .startTime((Double) workout.get("snap_tm"))
+                        .videoUrl(workout.get("file_url").toString() + workout.get("file_nm").toString())
+                        .tool((String) workout.get("tool_nm"))
+                        .place((String) workout.get("trng_plc_nm"))
+                        .health((String) workout.get("ftns_fctr_nm"))
                         .build();
                 this.prescriptionGuideDAO.createPrescriptionGuide(entity);
                 //logger.info(workout.toString());

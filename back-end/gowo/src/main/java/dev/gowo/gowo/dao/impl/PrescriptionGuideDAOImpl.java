@@ -27,12 +27,12 @@ public class PrescriptionGuideDAOImpl implements PrescriptionGuideDAO {
 
     @Override
     public List<PrescriptionGuideEntity> getByToolName(String tool) {
-        return this.prescriptionGuideRepository.getByTool_nm(tool);
+        return this.prescriptionGuideRepository.getByTool(tool);
     }
 
     @Override
     public List<PrescriptionGuideEntity> getByPlaceName(String place) {
-        return this.prescriptionGuideRepository.getByTrng_plc_nm(place);
+        return this.prescriptionGuideRepository.getByPlace(place);
     }
 
 

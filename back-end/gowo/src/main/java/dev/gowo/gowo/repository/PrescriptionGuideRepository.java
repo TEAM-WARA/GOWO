@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface PrescriptionGuideRepository extends JpaRepository<PrescriptionGuideEntity, Long> {
-    public List<PrescriptionGuideEntity> getByTool_nm(String tool_nm);
-    public List<PrescriptionGuideEntity> getByTrng_plc_nm(String trng_plc_nm);
+    public List<PrescriptionGuideEntity> getByTool(String tool);
+    public List<PrescriptionGuideEntity> getByPlace(String place);
 
 }

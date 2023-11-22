@@ -3,10 +3,7 @@ package dev.gowo.gowo.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Builder
 @Entity
@@ -20,29 +17,38 @@ public class PrescriptionGuideEntity {
     private Long id;
 
     // 운동명
-    private String trng_nm;
+    @Column
+    private String workOutName;
 
     // 운동 설명
-    private String vdo_desc;
+    @Column
+    private String workOutDescription;
 
     // 썸네일
-    private String thumbnail;
+    @Column
+    private String imageUrl;
 
     // 동영상 제목
-    private String vdo_ttl_nm;
+    @Column
+    private String videoName;
 
     // 장면전환재생시간
-    private Double snap_tm;
+    @Column
+    private Double startTime;
 
     // 동영상 주소
-    private String video_url;
+    @Column
+    private String videoUrl;
 
     // 소도구
-    private String tool_nm;
+    @Column
+    private String tool;
 
     // 장소
-    private String trng_plc_nm;
+    @Column
+    private String place;
 
     // 체력요인
-    private String ftns_fctr_nm;
+    @Column
+    private String health;
 }
