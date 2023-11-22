@@ -1,6 +1,7 @@
 package dev.gowo.gowo.dto;
 
 import lombok.*;
+import java.util.List;
 
 @Builder
 @Setter
@@ -8,7 +9,6 @@ import lombok.*;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class AreaResponseDTO {
-    int totalCount;
-    Object data;
+public class AreaCategoryResponseDTO {
+    List<String> area;
 }

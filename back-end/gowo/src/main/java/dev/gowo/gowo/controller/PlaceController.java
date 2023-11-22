@@ -27,9 +27,7 @@ public class PlaceController {
 
 
     @RequestMapping()
-    public ResponseEntity<List<PrescriptionGuideDTO>> getByPlaceName(
-            @RequestParam("place") String place
-    ){
+    public ResponseEntity<List<PrescriptionGuideDTO>> getByPlaceName(@RequestParam("place") String place){
         return this.placeService.getByPlaceName(place);
     }
 

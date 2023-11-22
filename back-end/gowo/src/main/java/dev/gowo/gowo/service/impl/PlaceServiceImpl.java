@@ -41,8 +41,7 @@ public class PlaceServiceImpl implements PlaceService {
                             .tool(entity.getTool())
                             .place(entity.getPlace())
                             .health(entity.getHealth())
-                            .build()
-            );
+                            .build());
         }
 
         return ResponseEntity.status(200).body(result);

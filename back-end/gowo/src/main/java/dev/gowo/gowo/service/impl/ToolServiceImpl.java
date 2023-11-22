@@ -40,8 +40,7 @@ public class ToolServiceImpl implements ToolService {
                             .tool(entity.getTool())
                             .place(entity.getPlace())
                             .health(entity.getHealth())
-                            .build()
-            );
+                            .build());
         }
         return ResponseEntity.status(200).body(result);
     }
