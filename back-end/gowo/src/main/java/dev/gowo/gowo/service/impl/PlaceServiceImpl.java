@@ -32,7 +32,6 @@ public class PlaceServiceImpl implements PlaceService {
             result.add(
                     PrescriptionGuideDTO.builder()
                             .id(entity.getId())
-<<<<<<< HEAD
                             .workOutName(entity.getWorkOutName())
                             .workOutDescription(entity.getWorkOutDescription())
                             .imageUrl(entity.getImageUrl())
@@ -42,19 +41,7 @@ public class PlaceServiceImpl implements PlaceService {
                             .tool(entity.getTool())
                             .place(entity.getPlace())
                             .health(entity.getHealth())
-=======
-                            .workOutName(entity.getTrng_nm())
-                            .workOutDescription(entity.getVdo_desc())
-                            .imageUrl(entity.getThumbnail())
-                            .videoName(entity.getVdo_ttl_nm())
-                            .startTime(entity.getSnap_tm())
-                            .videoUrl(entity.getVideo_url())
-                            .tool(entity.getTool_nm())
-                            .place(entity.getTrng_plc_nm())
-                            .health(entity.getFtns_fctr_nm())
->>>>>>> 7958d1e (🚧 디비 컬럼명 수정해야 함 비상!)
-                            .build()
-            );
+                            .build());
         }
 
         return ResponseEntity.status(200).body(result);

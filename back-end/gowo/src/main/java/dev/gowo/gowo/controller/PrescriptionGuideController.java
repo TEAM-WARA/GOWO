@@ -15,9 +15,7 @@ public class PrescriptionGuideController {
 
     private final PrescriptionGuideService prescriptionGuideService;
 
-    public PrescriptionGuideController(
-            @Autowired PrescriptionGuideService prescriptionGuideService
-    ){
+    public PrescriptionGuideController(@Autowired PrescriptionGuideService prescriptionGuideService){
         this.prescriptionGuideService = prescriptionGuideService;
     }
 
@@ -26,7 +24,4 @@ public class PrescriptionGuideController {
     public void test() throws URISyntaxException {
         this.prescriptionGuideService.saveData();
     }
-
-
-
 }
