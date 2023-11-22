@@ -1,6 +1,7 @@
 package dev.gowo.gowo.service.impl;
 
 import dev.gowo.gowo.dao.PurposeRoutineDAO;
+import dev.gowo.gowo.dto.AreaCategoryResponseDTO;
 import dev.gowo.gowo.dto.AreaResponseDTO;
 import dev.gowo.gowo.dto.PurposeRoutineDTO;
 import dev.gowo.gowo.entity.PurposeRoutineEntity;
@@ -20,18 +21,19 @@ public class AreaServiceImpl implements AreaService {
     }
 
     @Override
-    public List<PurposeRoutineDTO> readByArea(String area) {
+    public AreaResponseDTO readByArea(String area) {
         List<PurposeRoutineEntity> entities = purposeRoutineDAO.readByArea(area);
-        return toDTOList(entities);
+        List<PurposeRoutineDTO> dtoList = toDTOList(entities);
+        return toAreaResponseDTO(dtoList);
     }
 
     @Override
-    public AreaResponseDTO readByDistinctAreas() {
+    public AreaCategoryResponseDTO readByDistinctAreas() {
         List<String> areas = purposeRoutineDAO.readByDistinctAreas();
-        AreaResponseDTO areaResponseDTO = AreaResponseDTO.builder()
+        AreaCategoryResponseDTO areaCategoryResponseDTO = AreaCategoryResponseDTO.builder()
                 .area(areas)
                 .build();
-        return areaResponseDTO;
+        return areaCategoryResponseDTO;
     }
 
     public List<PurposeRoutineDTO> toDTOList(List<PurposeRoutineEntity> entities){
@@ -53,5 +55,13 @@ public class AreaServiceImpl implements AreaService {
             purposeRoutineDTOS.add(purposeRoutineDTO);
         }
         return purposeRoutineDTOS;
+    }
+
+    public AreaResponseDTO toAreaResponseDTO(List<PurposeRoutineDTO> DTOS){
+        AreaResponseDTO areaResponseDTO = AreaResponseDTO.builder()
+                .totalCount(DTOS.size())
+                .data(DTOS)
+                .build();
+        return areaResponseDTO;
     }
 }
