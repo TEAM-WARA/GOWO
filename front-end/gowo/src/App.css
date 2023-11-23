@@ -1,8 +1,14 @@
+@font-face {
+  font-family: "Thin1";
+  font-weight: normal;
+  src: url("./font/The\ Jamsil\ 1\ Thin.ttf") format("truetype");
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'PT Sans', sans-serif;
+  font-family: 'PT Thin1', sans-serif;
 }
 
 .home,

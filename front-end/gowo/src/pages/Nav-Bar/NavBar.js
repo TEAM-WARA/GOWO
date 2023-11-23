@@ -1,37 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useRef } from "react";
 import { Link } from 'react-router-dom'; //router 사용 
-import { Button} from '../button/Button';
 import './NavBar.css';
-import useDetectClose from "./UseDetectClose"
 
 function Navbar() {
     const [click, setClick] = useState(false);
-    const [button, setButton] = useState(true);
 
     const handleClick = () => setClick(!click);  //클릭할때마다 전환()
     const closeMobileMenu = () => setClick(false);
 
-    const dropDownRef = useRef(null);
-    const [isOpen, setIsOpen] = useDetectClose(dropDownRef, false);
 
-    // 화면 크기에 따라서 버튼이 보이고 안보이도록 설정한다. 
-    const showButton = () => {
-        if (window.innerWidth <= 960) {
-            setButton(false)
-        }
-        else {
-            setButton(true);
-        }
-    };
-
-    // SIGNUP버튼이 사이즈가 줄어들면 없어지도록 한다. 
-    useEffect(() => {
-        showButton();
-    }, []);
-
-
-    window.addEventListener('resize', showButton);
 
     return (
         <>
@@ -76,22 +54,8 @@ function Navbar() {
                             </Link>
                         </li>
 
-                        <li className='log-item'>
-                            <Link to='/login' className='nav-links-mobile' onClick={closeMobileMenu}>
-                                로그인
-                            </Link>
-                        </li>
-                        <li className='log-item'>
-                            <Link to='/join' className='nav-links-mobile' onClick={closeMobileMenu}>
-                                회원가입
-                            </Link>
-                        </li>
+                    </ul>
 
-                    </ul>
-                    <ul className='nav-button'>
-                        <li>{button && <Button buttonStyle='btn--outline'>로그인</Button>}</li>
-                        
-                    </ul>
                 </div>
             </nav>
         </>

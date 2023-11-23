@@ -109,9 +109,9 @@ li{
     background: #242222;
     left: 0;
     opacity: 1;
+    height: 90vh;
     transition: all 0.5s ease;
     z-index: 1;
-    height: auto;
   }
 
 
