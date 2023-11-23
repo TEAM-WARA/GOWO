@@ -1,17 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react';
 import CardItem from './Carditem';
 import './Cards.css';
 import { Link } from 'react-router-dom';
 
 
 class Cards extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+          selectedCategory: '',
+          data: [], // 데이터를 저장할 배열
+        };
+      }
+    handleCategoryClick = (category) => {
+        this.setState({ selectedCategory: category });
+    };
 
     render() {
         return (
             <>
                 <nav id='category'>
                     <ul>
-                        <li class ="cat-item">이건 뭐고</li>
+                        <li class ="cat-item" onClick={() => this.handleCategoryClick('하체')}>하체</li>
                         <li class ="cat-item">이건 이거고</li>
                         <li class ="cat-item">이건 저거다</li>
                         <li class ="cat-item">이건 저거다</li>
@@ -36,9 +46,10 @@ class Cards extends React.Component {
                         <div className="cards__wrapper">
                             <ul className="cards__items">
                                 <CardItem
-                                    src="images/img-9.jpg"
-                                    text="에 간단설명?"
-                                    label='도구'
+                                    src="http://openapi.kspo.or.kr/web/image/0AUDLJ08S_00041/0AUDLJ08S_00041_SC_00067.jpeg"
+                                    text="허리 숙여 발목잡기"
+                                    label='준비 운동'
+                                    video='http://openapi.kspo.or.kr/web/video/0AUDLJ08S_00041.mp4'
                                 />
                                 <CardItem
                                     src="images/img-9.jpg"
@@ -59,9 +70,9 @@ class Cards extends React.Component {
                             </ul>
                             <ul className='cards__items'>
                                 <CardItem
-                                    src="images/img-9.jpg"
-                                    text="Expore the hidden waterfall deep inside the Amazon Jungle"
-                                    label='덤벨'
+                                    src="http://openapi.kspo.or.kr/web/image/0AUDLJ08S_00041/0AUDLJ08S_00041_SC_00067.jpeg"
+                                    text="허리 숙여 발목잡기"
+                                    label='준비 운동'
                                 />
                                 <CardItem
                                     src='images/img-3.jpg'
