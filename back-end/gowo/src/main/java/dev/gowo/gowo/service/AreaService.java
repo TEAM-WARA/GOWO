@@ -1,12 +1,9 @@
 package dev.gowo.gowo.service;
 
-import dev.gowo.gowo.dto.AreaCategoryResponseDTO;
-import dev.gowo.gowo.dto.AreaResponseDTO;
-import dev.gowo.gowo.dto.PurposeRoutineDTO;
-
-import java.util.List;
+import dev.gowo.gowo.dto.CategoryResponseDTO;
+import dev.gowo.gowo.dto.PurposeRoutineResponseDTO;
 
 public interface AreaService {
-    public AreaResponseDTO readByArea(String area);
-    public AreaCategoryResponseDTO readByDistinctAreas();
+    public PurposeRoutineResponseDTO readByArea(String area);
+    public CategoryResponseDTO readByDistinctAreas();
 }

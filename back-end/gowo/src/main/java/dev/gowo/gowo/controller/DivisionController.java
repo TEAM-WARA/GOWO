@@ -1,6 +1,8 @@
 package dev.gowo.gowo.controller;
 
+import dev.gowo.gowo.dto.CategoryResponseDTO;
 import dev.gowo.gowo.dto.PurposeRoutineDTO;
+import dev.gowo.gowo.dto.PurposeRoutineResponseDTO;
 import dev.gowo.gowo.service.DivisionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +22,12 @@ public class DivisionController {
     }
 
     @GetMapping("/read/{division}")
-    public List<PurposeRoutineDTO> readByDivision(@PathVariable String division){
+    public PurposeRoutineResponseDTO readByDivision(@PathVariable String division){
         return divisionService.readByDivision(division);
+    }
+
+    @GetMapping("/category")
+    public CategoryResponseDTO readByDistinctDivisions(){
+        return divisionService.readByDistinctDivisions();
     }
 }

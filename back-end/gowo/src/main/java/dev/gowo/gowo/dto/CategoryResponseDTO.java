@@ -9,6 +9,6 @@ import java.util.List;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class AreaCategoryResponseDTO {
-    List<String> area;
+public class CategoryResponseDTO {
+    List<String> category;
 }
