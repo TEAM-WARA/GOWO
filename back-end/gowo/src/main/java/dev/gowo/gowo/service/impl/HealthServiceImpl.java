@@ -68,4 +68,9 @@ public class HealthServiceImpl implements HealthService {
 
         return ResponseEntity.status(200).body(result);
     }
+
+    @Override
+    public ResponseEntity<List<String>> getByDistinctHealth() {
+        return ResponseEntity.status(200).body(prescriptionGuideDAO.getByDistinctHealth());
+    }
 }

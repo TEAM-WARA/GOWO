@@ -44,4 +44,9 @@ public class ToolServiceImpl implements ToolService {
         }
         return ResponseEntity.status(200).body(result);
     }
+
+    @Override
+    public ResponseEntity<List<String>> getByDistinctTool() {
+        return ResponseEntity.status(200).body(prescriptionGuideDAO.getByDistinctTool());
+    }
 }

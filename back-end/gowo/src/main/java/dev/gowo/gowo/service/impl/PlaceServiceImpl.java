@@ -46,4 +46,9 @@ public class PlaceServiceImpl implements PlaceService {
 
         return ResponseEntity.status(200).body(result);
     }
+
+    @Override
+    public ResponseEntity<List<String>> getByDistinctPlace() {
+        return ResponseEntity.status(200).body(prescriptionGuideDAO.getByDistinctPlace());
+    }
 }

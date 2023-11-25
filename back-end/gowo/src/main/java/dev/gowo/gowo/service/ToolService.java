@@ -8,5 +8,5 @@ import java.util.List;
 public interface ToolService {
 
     public ResponseEntity<List<PrescriptionGuideDTO>> getByToolName(String tool);
-
+    public ResponseEntity<List<String>> getByDistinctTool();
 }

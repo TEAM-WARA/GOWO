@@ -11,7 +11,7 @@ public interface PrescriptionGuideDAO {
     public List<PrescriptionGuideEntity> getByPlaceName(String place);
     public List<PrescriptionGuideEntity> getByHealth(String health);
     public List<PrescriptionGuideEntity> getMainWorkOut(String health, String tool, String place);
-
-
-
+    public List<String> getByDistinctTool();
+    public List<String> getByDistinctPlace();
+    public List<String> getByDistinctHealth();
 }

@@ -8,5 +8,5 @@ import java.util.List;
 public interface PlaceService {
 
     public ResponseEntity<List<PrescriptionGuideDTO>> getByPlaceName(String place);
-
+    public ResponseEntity<List<String>> getByDistinctPlace();
 }

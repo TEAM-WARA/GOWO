@@ -37,4 +37,9 @@ public class ToolController {
         return toolService.getByToolName(tool);
     }
 
+    @GetMapping("/category")
+    public ResponseEntity<List<String>> readByToolCategory(){
+        return toolService.getByDistinctTool();
+    }
+
 }

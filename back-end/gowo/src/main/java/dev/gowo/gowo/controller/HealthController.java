@@ -39,5 +39,10 @@ public class HealthController {
         return this.healthService.getChoiceByHealth(health);
     }
 
+    @GetMapping("/category")
+    public ResponseEntity<List<String>> readByHealthCategory(){
+        return healthService.getByDistinctHealth();
+    }
+
 
 }
