@@ -35,5 +35,10 @@ public class PrescriptionGuideDAOImpl implements PrescriptionGuideDAO {
         return this.prescriptionGuideRepository.getByPlace(place);
     }
 
+    @Override
+    public List<PrescriptionGuideEntity> getByHealth(String health) {
+        return this.prescriptionGuideRepository.getByHealth(health);
+    }
+
 
 }
