@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { AnotherButton, Button } from '../button/Button';
-import './NewRoutine.css';
+import './MyRoutine.css';
 import TableComponent from './TableComponent';
 
-function NewRoutine() {
+export default function MyRoutine() {
     const data = [
         { '이름': '홍길동', '나이': 30, '직업': '개발자' },
         { '이름': '이순신', '나이': 35, '직업': '디자이너' },
@@ -96,5 +96,3 @@ function NewRoutine() {
         </>
     )
 }
-
-export default NewRoutine;

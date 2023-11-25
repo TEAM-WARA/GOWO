@@ -31,6 +31,14 @@ function MyPage() {
         console.log("hi");
     }
 
+
+    // 확인 시 나오는 페이지
+        const handleLogin = () => {
+            console.log(state);
+            navigate("/MyRoutine");
+            console.log("hi");
+        }
+
     //라디오 박스
     const [genderOption, setGenderOption] = useState("");
     const handleGenderChange = (e) => {
@@ -69,7 +77,7 @@ function MyPage() {
                             onChange={handleChangeState}
                         />
                     </li>
-                    <li className='usercheck-button'>{button && <Button buttonStyle='btn--outline' onClick={handleSubmit}>로그인</Button>}</li>
+                    <li className='usercheck-button'>{button && <AnotherButton buttonStyle='btn--outline' onClick={handleLogin}>로그인</AnotherButton>}</li>
                 </ul>
             </nav>
             <div className="sur-section">

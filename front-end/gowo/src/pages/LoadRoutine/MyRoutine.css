@@ -1,0 +1,8 @@
+table#jb-table th, table#jb-table td { padding: 20px 80px; border: 1px solid #444444; }
+table#jb-table th { background-color: #eeeeee; }
+table#jb-table tbody tr td:first-child { background-color: #eeeeee; }
+
+#jb-table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
