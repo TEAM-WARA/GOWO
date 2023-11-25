@@ -40,7 +40,7 @@ return (
                   key={i + "-" + innerIndex}
                   src={i}
                   text={innerValue}
-                  label={i}
+                  label={i + "-" + innerIndex}
                   video={i}
                 />
               )) 

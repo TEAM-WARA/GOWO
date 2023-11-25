@@ -79,6 +79,20 @@ function NewRoutine() {
 
             <NewRoutineComponent></NewRoutineComponent>
             {/* </nav> */}
+            <nav className="check-user-text">
+                <ul>
+                    <li className="mypagetext">루틴저장번호 </li>
+                    <li className="input-userid">
+                        <input
+                            name="author"
+                            value={state.author}
+                            onChange={handleChangeState}
+
+                        />
+                    </li>
+                    <li className='usercheck-button'>{button && <AnotherButton buttonStyle='btn--outline' onClick={handleSubmit}>저장</AnotherButton>}</li>
+                </ul>
+            </nav>
         </>
     )
 }
