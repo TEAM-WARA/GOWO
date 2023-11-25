@@ -1,6 +1,7 @@
 package dev.gowo.gowo.controller;
 
 
+import dev.gowo.gowo.dto.CategoryResponseDTO;
 import dev.gowo.gowo.dto.PrescriptionGuideDTO;
 import dev.gowo.gowo.service.PlaceService;
 import org.slf4j.Logger;
@@ -33,7 +34,7 @@ public class PlaceController {
     }
 
     @GetMapping("/category")
-    public ResponseEntity<List<String>> readByPlaceCategory(){
+    public CategoryResponseDTO readByPlaceCategory(){
         return placeService.getByDistinctPlace();
     }
 
