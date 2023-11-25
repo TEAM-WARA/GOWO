@@ -32,5 +32,12 @@ public class HealthController {
         return this.healthService.getByHealth(health);
     }
 
+    @GetMapping("/choice")
+    public ResponseEntity<List<PrescriptionGuideDTO>> readChoiceByHealth(
+            @RequestParam("health") String health
+    ){
+        return this.healthService.getChoiceByHealth(health);
+    }
+
 
 }

@@ -9,4 +9,7 @@ public interface PrescriptionGuideRepository extends JpaRepository<PrescriptionG
     public List<PrescriptionGuideEntity> getByTool(String tool);
     public List<PrescriptionGuideEntity> getByPlace(String place);
     public List<PrescriptionGuideEntity> getByHealth(String health);
+    // 실외 추출
+    public List<PrescriptionGuideEntity> getByHealthAndToolAndPlace(String health, String tool, String place);
+    public List<PrescriptionGuideEntity> getByHealthAndToolNotAndPlace(String health, String tool, String place);
 }
