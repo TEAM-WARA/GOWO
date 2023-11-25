@@ -40,5 +40,14 @@ public class PrescriptionGuideDAOImpl implements PrescriptionGuideDAO {
         return this.prescriptionGuideRepository.getByHealth(health);
     }
 
+    @Override
+    public List<PrescriptionGuideEntity> getMainWorkOut(String health, String tool, String place) {
+        if(tool.equals("사용")) {
+            return this.prescriptionGuideRepository.getByHealthAndToolNotAndPlace(health, "", place);
+        }else{
+            return this.prescriptionGuideRepository.getByHealthAndToolAndPlace(health, "", place);
+        }
+    }
+
 
 }

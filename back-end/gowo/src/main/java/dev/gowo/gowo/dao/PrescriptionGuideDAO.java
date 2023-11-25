@@ -10,6 +10,7 @@ public interface PrescriptionGuideDAO {
     public List<PrescriptionGuideEntity> getByToolName(String tool);
     public List<PrescriptionGuideEntity> getByPlaceName(String place);
     public List<PrescriptionGuideEntity> getByHealth(String health);
+    public List<PrescriptionGuideEntity> getMainWorkOut(String health, String tool, String place);
 
 
 

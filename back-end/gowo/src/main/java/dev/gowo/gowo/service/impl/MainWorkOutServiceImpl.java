@@ -3,37 +3,32 @@ package dev.gowo.gowo.service.impl;
 import dev.gowo.gowo.dao.PrescriptionGuideDAO;
 import dev.gowo.gowo.dto.PrescriptionGuideDTO;
 import dev.gowo.gowo.entity.PrescriptionGuideEntity;
-import dev.gowo.gowo.service.HealthService;
-import org.apache.tomcat.jni.Time;
+import dev.gowo.gowo.service.MainWorkOutService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-
 @Service
-public class HealthServiceImpl implements HealthService {
+public class MainWorkOutServiceImpl implements MainWorkOutService {
 
+    public final PrescriptionGuideDAO prescriptionGuideDAO;
 
-    private final PrescriptionGuideDAO prescriptionGuideDAO;
-
-    public HealthServiceImpl(
+    public MainWorkOutServiceImpl(
             @Autowired PrescriptionGuideDAO prescriptionGuideDAO
     ){
         this.prescriptionGuideDAO = prescriptionGuideDAO;
     }
 
-    // 반복작업 묶음
-    public List<PrescriptionGuideDTO> getAllByHealth(String health){
-        List<PrescriptionGuideDTO> result = new ArrayList<>();
-        List<PrescriptionGuideEntity> entities = this.prescriptionGuideDAO.getByHealth(health);
-
+    @Override
+    public ResponseEntity<List<PrescriptionGuideDTO>> getChoiceByMainWorkOut(String health, String tool, String place) {
+        List<PrescriptionGuideDTO> data = new ArrayList<>();
+        List<PrescriptionGuideEntity> entities = this.prescriptionGuideDAO.getMainWorkOut(health, tool, place);
         for(PrescriptionGuideEntity entity : entities){
-            result.add(
+            data.add(
                     PrescriptionGuideDTO.builder()
                             .id(entity.getId())
                             .workOutName(entity.getWorkOutName())
@@ -47,24 +42,12 @@ public class HealthServiceImpl implements HealthService {
                             .health(entity.getHealth())
                             .build());
         }
-        return result;
-    }
-
-    @Override
-    public ResponseEntity<List<PrescriptionGuideDTO>> getByHealth(String health) {
-        return ResponseEntity.status(200).body(this.getAllByHealth(health));
-    }
-
-    @Override
-    public ResponseEntity<List<PrescriptionGuideDTO>> getChoiceByHealth(String health) {
-        List<PrescriptionGuideDTO> data = this.getAllByHealth(health);
-        Random rm = new Random(System.currentTimeMillis());
         List<PrescriptionGuideDTO> result = new ArrayList<>();
-        int i = 4;
+        Random rm = new Random(System.currentTimeMillis());
+        int i = data.size() < 4 ? data.size() : 4;
         while(i-- > 0 ){
             result.add(data.get(rm.nextInt(data.size())));
         }
-
 
         return ResponseEntity.status(200).body(result);
     }

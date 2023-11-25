@@ -9,5 +9,6 @@ import java.util.List;
 public interface HealthService {
 
     public ResponseEntity<List<PrescriptionGuideDTO>> getByHealth(String health);
+    public ResponseEntity<List<PrescriptionGuideDTO>> getChoiceByHealth(String health);
 
 }
