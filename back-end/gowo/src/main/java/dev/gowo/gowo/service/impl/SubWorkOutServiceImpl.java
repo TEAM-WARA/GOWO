@@ -36,6 +36,17 @@ public class SubWorkOutServiceImpl implements SubWorkOutService {
         return toaResponseDTO(result);
     }
 
+    @Override
+    public List<PurposeRoutineDTO> readByDTOList(List<Long> workOutIds) {
+        List<PurposeRoutineEntity> entities = new ArrayList<>();
+
+        for(Long id : workOutIds){
+            entities.add(purposeRoutineDAO.readById(id));
+        }
+
+        return toDTOList(entities);
+    }
+
     public List<PurposeRoutineDTO> toDTOList(List<PurposeRoutineEntity> entities){
         List<PurposeRoutineDTO> purposeRoutineDTOS = new ArrayList<>();
 

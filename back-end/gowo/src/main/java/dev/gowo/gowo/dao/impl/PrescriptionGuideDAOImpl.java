@@ -26,6 +26,11 @@ public class PrescriptionGuideDAOImpl implements PrescriptionGuideDAO {
     }
 
     @Override
+    public PrescriptionGuideEntity readById(Long id) {
+        return prescriptionGuideRepository.getById(id);
+    }
+
+    @Override
     public List<PrescriptionGuideEntity> getByToolName(String tool) {
         return this.prescriptionGuideRepository.getByTool(tool);
     }

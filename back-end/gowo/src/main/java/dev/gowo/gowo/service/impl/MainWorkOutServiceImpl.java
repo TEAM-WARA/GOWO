@@ -51,4 +51,36 @@ public class MainWorkOutServiceImpl implements MainWorkOutService {
 
         return ResponseEntity.status(200).body(result);
     }
+
+    @Override
+    public List<PrescriptionGuideDTO> readByDTOList(List<Long> workOutIds) {
+        List<PrescriptionGuideEntity> entities = new ArrayList<>();
+
+        for(Long id : workOutIds){
+            entities.add(prescriptionGuideDAO.readById(id));
+        }
+
+        return toDTOList(entities);
+    }
+
+    public List<PrescriptionGuideDTO> toDTOList(List<PrescriptionGuideEntity> entities){
+        List<PrescriptionGuideDTO> prescriptionGuideDTOS = new ArrayList<>();
+
+        for(PrescriptionGuideEntity entity : entities){
+            PrescriptionGuideDTO purposeRoutineDTO = PrescriptionGuideDTO.builder()
+                    .id(entity.getId())
+                    .workOutName(entity.getWorkOutName())
+                    .workOutDescription(entity.getWorkOutDescription())
+                    .imageUrl(entity.getImageUrl())
+                    .videoName(entity.getVideoName())
+                    .startTime(entity.getStartTime())
+                    .videoUrl(entity.getVideoUrl())
+                    .tool(entity.getTool())
+                    .place(entity.getPlace())
+                    .health(entity.getHealth())
+                    .build();
+            prescriptionGuideDTOS.add(purposeRoutineDTO);
+        }
+        return prescriptionGuideDTOS;
+    }
 }

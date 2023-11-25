@@ -1,6 +1,7 @@
 package dev.gowo.gowo.service.impl;
 
 import dev.gowo.gowo.dao.PurposeRoutineDAO;
+import dev.gowo.gowo.dto.PurposeRoutineDTO;
 import dev.gowo.gowo.entity.PurposeRoutineEntity;
 import dev.gowo.gowo.service.PurposeRoutineService;
 import org.json.simple.JSONObject;
