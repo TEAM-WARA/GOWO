@@ -22,8 +22,6 @@ public class MainWorkOutController {
         this.mainWorkOutService = mainWorkOutService;
     }
 
-
-
     @GetMapping()
     public ResponseEntity<List<PrescriptionGuideDTO>> readMainWorkOut(
             @RequestBody MainWorkOutDTO mainWorkOutDTO
