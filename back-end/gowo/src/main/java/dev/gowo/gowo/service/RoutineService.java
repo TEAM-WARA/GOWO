@@ -12,6 +12,8 @@ import java.util.List;
 public interface RoutineService {
     public ResponseEntity<String> createRoutine(String password, List<DayRoutineDTO> dayRoutineDTOList);
     public ResponseEntity<RoutineDTO> readRoutineByPassword(String password);
+
+    public ResponseEntity<Boolean> existsPassword(String password);
     public RoutineEntity test2();
 
 

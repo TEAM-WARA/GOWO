@@ -83,6 +83,15 @@ public class RoutineServiceImpl implements RoutineService {
     }
 
     @Override
+    public ResponseEntity<Boolean> existsPassword(String password) {
+        if(this.routineDAO.existPassword(password)){
+            return ResponseEntity.status(200).body(true);
+        }else{
+            return ResponseEntity.status(400).body(false);
+        }
+    }
+
+    @Override
     public RoutineEntity test2() {
         RoutineEntity routine = this.routineDAO.getRoutineByPassword("asd");
 

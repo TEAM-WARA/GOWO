@@ -26,4 +26,9 @@ public class RoutineDAOImpl implements RoutineDAO {
     public RoutineEntity getRoutineByPassword(String password) {
         return this.routineRepository.getById(password);
     }
+
+    @Override
+    public Boolean existPassword(String password) {
+        return this.routineRepository.existsById(password);
+    }
 }

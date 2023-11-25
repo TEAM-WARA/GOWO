@@ -43,6 +43,14 @@ public class RoutineController {
     ){
         return this.routineService.readRoutineByPassword(password);
     }
+
+    @PostMapping("/password")
+    public ResponseEntity<Boolean> existRoutine(
+            @RequestParam("password") String password
+    ){
+        return this.routineService.existsPassword(password);
+    }
+
 //
 //    @GetMapping()
 //    public RoutineEntity test(){
