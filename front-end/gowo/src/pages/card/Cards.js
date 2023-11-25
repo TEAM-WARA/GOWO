@@ -1,11 +1,15 @@
-import React,{useState,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import CardItem from './Carditem';
 import './Cards.css';
 //import { Link } from 'react-router-dom';
 
 
 function Cards() {
+    const pageSize = 16; //
+    const cardsPerRow = 4; // 카드 열 개수
+    const pagesToShow = 5; // 표시할 페이지 번호 개수
     const [data, setData] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
         // API에서 데이터 가져오기
@@ -18,14 +22,26 @@ function Cards() {
             })
             .then(apiData => {
                 console.log('Fetched data:', apiData);
-                setData(apiData);
+                setData(apiData.data);
             })
             .catch(error => {
                 console.error('Error fetching data:', error);
             });
-    }, []);
+    }, [currentPage]);
+    const handlePageChange = (newPage) => {
+        setCurrentPage(newPage);
+    };
+    // 페이지 수 계산
+    const totalPages = Math.ceil(data.length / pageSize);
+
+    // 현재 페이지의 데이터 계산
+    const startIndex = (currentPage - 1) * pageSize;
+    const endIndex = startIndex + pageSize;
+    const currentPageData = data.slice(startIndex, endIndex);
+
     return (
         <>
+
             <nav id='category'>
                 <ul>
                     <li class="cat-item">하체</li>
@@ -51,51 +67,41 @@ function Cards() {
             <div className='cards'>
                 <div className="cards__container">
                     <div className="cards__wrapper">
-                        <ul className="cards__items">
-
-                            <CardItem
-                                src="images/img-9.jpg"
-                                text="아"
-                                label='밴드'
-                            />
-                            <CardItem
-                                src="images/img-2.jpg"
-                                text="이"
-                                label='줄넘기'
-                            />
-                            <CardItem
-                                src="images/img-2.jpg"
-                                text="우"
-                                label='물통'
-                                path='/services'
-                            />
-                        </ul>
-                        <ul className='cards__items'>
-                            <CardItem
-                                src="http://openapi.kspo.or.kr/web/image/0AUDLJ08S_00041/0AUDLJ08S_00041_SC_00067.jpeg"
-                                text="허리 숙여 발목잡기"
-                                label='준비 운동'
-                                video='http://openapi.kspo.or.kr/web/video/0AUDLJ08S_00041.mp4'
-                            />
-                            <CardItem
-                                src='images/img-3.jpg'
-                                text='Set Sail in the Atlantic Ocean visiting Uncharted Waters'
-                                label='뭐 예를들자면'
-                            />
-                            <CardItem
-                                src='images/img-4.jpg'
-                                text='Experience Football on Top of the Himilayan Mountains'
-                                label='도구이름'
-                            />
-                            <CardItem
-                                src='images/img-8.jpg'
-                                text='Ride through the Sahara Desert on a guided camel tour'
-                                label='이름도구'
-                            />
-                        </ul>
+                        {/* 변경된 부분: 카드를 4개씩 4줄로 나열 */}
+                        {Array.from({ length: Math.ceil(currentPageData.length / cardsPerRow) }).map((_, rowIndex) => (
+                            <ul key={rowIndex} className="cards__items">
+                                {currentPageData.slice(rowIndex * cardsPerRow, (rowIndex + 1) * cardsPerRow).map(item => (
+                                    <CardItem
+                                        key={item.id}
+                                        src={item.imageUrl}
+                                        text={item.workOutName}
+                                        label={item.workOutDivision}
+                                        video={item.videoUrl}
+                                    />
+                                ))}
+                            </ul>
+                        ))}
                     </div>
                 </div>
+                {/* 페이지네이션 컨트롤 */}
+                <div className="pagination">
+                    <button
+                        onClick={() => handlePageChange(currentPage - 1)}
+                        disabled={currentPage === 1}
+                    >
+                      {'<'}  
+                    </button>
+                    <span>{currentPage}</span>
+                    <button
+                        onClick={() => handlePageChange(currentPage + 1)}
+                        disabled={currentPage === totalPages}
+                    >
+                       {'>'}
+                    </button>
+                </div>
             </div>
+
+
         </>
     );
 
