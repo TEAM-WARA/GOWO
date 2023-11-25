@@ -2,8 +2,8 @@ package dev.gowo.gowo.controller;
 
 
 import dev.gowo.gowo.dto.DayRoutineDTO;
+import dev.gowo.gowo.dto.ResponseDayRoutineDTO;
 import dev.gowo.gowo.dto.RoutineDTO;
-import dev.gowo.gowo.entity.RoutineEntity;
 import dev.gowo.gowo.service.RoutineService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

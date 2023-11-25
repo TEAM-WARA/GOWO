@@ -3,10 +3,13 @@ package dev.gowo.gowo.service.impl;
 import dev.gowo.gowo.dao.DayRoutineDAO;
 import dev.gowo.gowo.dao.RoutineDAO;
 import dev.gowo.gowo.dto.DayRoutineDTO;
+import dev.gowo.gowo.dto.ResponseDayRoutineDTO;
 import dev.gowo.gowo.dto.RoutineDTO;
 import dev.gowo.gowo.entity.DayRoutineEntity;
 import dev.gowo.gowo.entity.RoutineEntity;
+import dev.gowo.gowo.service.MainWorkOutService;
 import dev.gowo.gowo.service.RoutineService;
+import dev.gowo.gowo.service.SubWorkOutService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +25,17 @@ public class RoutineServiceImpl implements RoutineService {
     private final static Logger logger = LoggerFactory.getLogger(RoutineServiceImpl.class);
     private final DayRoutineDAO dayRoutineDAO;
     private final RoutineDAO routineDAO;
+    private final MainWorkOutService mainWorkOutService;
+    private final SubWorkOutService subWorkOutService;
 
     public RoutineServiceImpl(
+            @Autowired MainWorkOutService mainWorkOutService,
+            @Autowired SubWorkOutService subWorkOutService,
             @Autowired DayRoutineDAO dayRoutineDAO,
             @Autowired RoutineDAO routineDAO
     ){
+        this.mainWorkOutService = mainWorkOutService;
+        this.subWorkOutService = subWorkOutService;
         this.dayRoutineDAO = dayRoutineDAO;
         this.routineDAO = routineDAO;
     }
@@ -56,13 +65,13 @@ public class RoutineServiceImpl implements RoutineService {
     @Override
     public ResponseEntity<RoutineDTO> readRoutineByPassword(String password) {
         RoutineEntity data = this.routineDAO.getRoutineByPassword(password);
-        List<DayRoutineDTO> dtos = new ArrayList<>();
+        List<ResponseDayRoutineDTO> dtos = new ArrayList<>();
         for(DayRoutineEntity dayRoutineEntity : data.getRoutineEntityList()){
-            DayRoutineDTO dto = DayRoutineDTO.builder()
+            ResponseDayRoutineDTO dto = ResponseDayRoutineDTO.builder()
                     .id(dayRoutineEntity.getId())
-                    .preWorkOut(dayRoutineEntity.getPreWorkOut())
-                    .mainWorkOut(dayRoutineEntity.getPreWorkOut())
-                    .finishWorkOut(dayRoutineEntity.getFinishWorkOut()).build();
+                    .preWorkOut(this.subWorkOutService.readByDTOList(dayRoutineEntity.getPreWorkOut()))
+                    .mainWorkOut(this.mainWorkOutService.readByDTOList(dayRoutineEntity.getMainWorkOut()))
+                    .finishWorkOut(this.subWorkOutService.readByDTOList(dayRoutineEntity.getFinishWorkOut())).build();
             dtos.add(dto);
         }
         RoutineDTO result = RoutineDTO.builder()

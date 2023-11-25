@@ -14,5 +14,5 @@ import java.util.List;
 public class RoutineDTO {
     private Long count;
     @Builder.Default
-    private List<DayRoutineDTO> data = new ArrayList<>();
+    private List<ResponseDayRoutineDTO> data = new ArrayList<>();
 }
