@@ -9,6 +9,7 @@ import java.util.List;
 
 @Repository
 public interface PurposeRoutineRepository extends JpaRepository<PurposeRoutineEntity, Long> {
+    PurposeRoutineEntity getById(Long id);
     List<PurposeRoutineEntity> findByWorkOutArea(String workOutArea);
     List<PurposeRoutineEntity> findByWorkOutDivision(String workOutDivision);
     List<PurposeRoutineEntity> findByWorkOutPurpose(String workOutPurpose);

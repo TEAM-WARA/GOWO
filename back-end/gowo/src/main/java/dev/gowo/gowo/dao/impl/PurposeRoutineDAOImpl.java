@@ -22,6 +22,11 @@ public class PurposeRoutineDAOImpl implements PurposeRoutineDAO {
     }
 
     @Override
+    public PurposeRoutineEntity readById(Long id) {
+        return purposeRoutineRepository.getById(id);
+    }
+
+    @Override
     public List<PurposeRoutineEntity> readByPurpose(String purpose) {
         return purposeRoutineRepository.findByWorkOutPurpose(purpose);
     }
