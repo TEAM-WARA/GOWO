@@ -1,7 +1,9 @@
 package dev.gowo.gowo.service.impl;
 
 import dev.gowo.gowo.dao.PurposeRoutineDAO;
+import dev.gowo.gowo.dto.CategoryResponseDTO;
 import dev.gowo.gowo.dto.PurposeRoutineDTO;
+import dev.gowo.gowo.dto.PurposeRoutineResponseDTO;
 import dev.gowo.gowo.entity.PurposeRoutineEntity;
 import dev.gowo.gowo.service.DivisionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +21,19 @@ public class DivisionServiceImpl implements DivisionService {
     }
 
     @Override
-    public List<PurposeRoutineDTO> readByDivision(String division) {
+    public PurposeRoutineResponseDTO readByDivision(String division) {
         List<PurposeRoutineEntity> entities = purposeRoutineDAO.readByDivision(division);
-        return toDTOList(entities);
+        List<PurposeRoutineDTO> dtoList = toDTOList(entities);
+        return toaResponseDTO(dtoList);
+    }
+
+    @Override
+    public CategoryResponseDTO readByDistinctDivisions() {
+        List<String> divisionCategory = purposeRoutineDAO.readByDistinctDivisions();
+        CategoryResponseDTO categoryResponseDTO = CategoryResponseDTO.builder()
+                .category(divisionCategory)
+                .build();
+        return categoryResponseDTO;
     }
 
     public List<PurposeRoutineDTO> toDTOList(List<PurposeRoutineEntity> entities){
@@ -43,5 +55,13 @@ public class DivisionServiceImpl implements DivisionService {
             purposeRoutineDTOS.add(purposeRoutineDTO);
         }
         return purposeRoutineDTOS;
+    }
+
+    public PurposeRoutineResponseDTO toaResponseDTO(List<PurposeRoutineDTO> DTOS){
+        PurposeRoutineResponseDTO purposeRoutineResponseDTO = PurposeRoutineResponseDTO.builder()
+                .totalCount(DTOS.size())
+                .data(DTOS)
+                .build();
+        return purposeRoutineResponseDTO;
     }
 }

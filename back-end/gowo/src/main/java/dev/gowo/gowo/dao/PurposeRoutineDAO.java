@@ -10,4 +10,6 @@ public interface PurposeRoutineDAO {
     public List<PurposeRoutineEntity> readByDivision(String division);
     public List<PurposeRoutineEntity> readByArea(String area);
     public List<String> readByDistinctAreas();
+    public List<String> readByDistinctDivisions();
+    public List<String> readByDistinctPurposes();
 }

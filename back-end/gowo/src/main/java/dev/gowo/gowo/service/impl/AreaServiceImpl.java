@@ -1,8 +1,8 @@
 package dev.gowo.gowo.service.impl;
 
 import dev.gowo.gowo.dao.PurposeRoutineDAO;
-import dev.gowo.gowo.dto.AreaCategoryResponseDTO;
-import dev.gowo.gowo.dto.AreaResponseDTO;
+import dev.gowo.gowo.dto.CategoryResponseDTO;
+import dev.gowo.gowo.dto.PurposeRoutineResponseDTO;
 import dev.gowo.gowo.dto.PurposeRoutineDTO;
 import dev.gowo.gowo.entity.PurposeRoutineEntity;
 import dev.gowo.gowo.service.AreaService;
@@ -21,19 +21,19 @@ public class AreaServiceImpl implements AreaService {
     }
 
     @Override
-    public AreaResponseDTO readByArea(String area) {
+    public PurposeRoutineResponseDTO readByArea(String area) {
         List<PurposeRoutineEntity> entities = purposeRoutineDAO.readByArea(area);
         List<PurposeRoutineDTO> dtoList = toDTOList(entities);
-        return toAreaResponseDTO(dtoList);
+        return toaResponseDTO(dtoList);
     }
 
     @Override
-    public AreaCategoryResponseDTO readByDistinctAreas() {
-        List<String> areas = purposeRoutineDAO.readByDistinctAreas();
-        AreaCategoryResponseDTO areaCategoryResponseDTO = AreaCategoryResponseDTO.builder()
-                .area(areas)
+    public CategoryResponseDTO readByDistinctAreas() {
+        List<String> areaCategory = purposeRoutineDAO.readByDistinctAreas();
+        CategoryResponseDTO categoryResponseDTO = CategoryResponseDTO.builder()
+                .category(areaCategory)
                 .build();
-        return areaCategoryResponseDTO;
+        return categoryResponseDTO;
     }
 
     public List<PurposeRoutineDTO> toDTOList(List<PurposeRoutineEntity> entities){
@@ -57,11 +57,11 @@ public class AreaServiceImpl implements AreaService {
         return purposeRoutineDTOS;
     }
 
-    public AreaResponseDTO toAreaResponseDTO(List<PurposeRoutineDTO> DTOS){
-        AreaResponseDTO areaResponseDTO = AreaResponseDTO.builder()
+    public PurposeRoutineResponseDTO toaResponseDTO(List<PurposeRoutineDTO> DTOS){
+        PurposeRoutineResponseDTO purposeRoutineResponseDTO = PurposeRoutineResponseDTO.builder()
                 .totalCount(DTOS.size())
                 .data(DTOS)
                 .build();
-        return areaResponseDTO;
+        return purposeRoutineResponseDTO;
     }
 }

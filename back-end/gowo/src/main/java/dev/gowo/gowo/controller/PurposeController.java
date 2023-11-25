@@ -1,6 +1,8 @@
 package dev.gowo.gowo.controller;
 
+import dev.gowo.gowo.dto.CategoryResponseDTO;
 import dev.gowo.gowo.dto.PurposeRoutineDTO;
+import dev.gowo.gowo.dto.PurposeRoutineResponseDTO;
 import dev.gowo.gowo.service.PurposeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +22,12 @@ public class PurposeController {
     }
 
     @GetMapping("/read/{purpose}")
-    public List<PurposeRoutineDTO> readByPurpose(@PathVariable String purpose){
+    public PurposeRoutineResponseDTO readByPurpose(@PathVariable String purpose){
         return purposeService.readByPurpose(purpose);
+    }
+
+    @GetMapping("/category")
+    public CategoryResponseDTO readByDistinctPurposes(){
+        return purposeService.readByDistinctPurposes();
     }
 }
