@@ -1,6 +1,7 @@
 package dev.gowo.gowo.service.impl;
 
 import dev.gowo.gowo.dao.PrescriptionGuideDAO;
+import dev.gowo.gowo.dto.CategoryResponseDTO;
 import dev.gowo.gowo.dto.PrescriptionGuideDTO;
 import dev.gowo.gowo.entity.PrescriptionGuideEntity;
 import dev.gowo.gowo.service.HealthService;
@@ -67,5 +68,14 @@ public class HealthServiceImpl implements HealthService {
 
 
         return ResponseEntity.status(200).body(result);
+    }
+
+    @Override
+    public CategoryResponseDTO getByDistinctHealth() {
+        List<String> category = prescriptionGuideDAO.getByDistinctHealth();
+        CategoryResponseDTO categoryResponseDTO = CategoryResponseDTO.builder()
+                .category(category)
+                .build();
+        return categoryResponseDTO;
     }
 }

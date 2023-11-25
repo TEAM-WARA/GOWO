@@ -1,6 +1,7 @@
 package dev.gowo.gowo.service.impl;
 
 import dev.gowo.gowo.dao.PrescriptionGuideDAO;
+import dev.gowo.gowo.dto.CategoryResponseDTO;
 import dev.gowo.gowo.dto.PrescriptionGuideDTO;
 import dev.gowo.gowo.entity.PrescriptionGuideEntity;
 import dev.gowo.gowo.service.PlaceService;
@@ -45,5 +46,14 @@ public class PlaceServiceImpl implements PlaceService {
         }
 
         return ResponseEntity.status(200).body(result);
+    }
+
+    @Override
+    public CategoryResponseDTO getByDistinctPlace() {
+        List<String> category = prescriptionGuideDAO.getByDistinctPlace();
+        CategoryResponseDTO categoryResponseDTO = CategoryResponseDTO.builder()
+                .category(category)
+                .build();
+        return categoryResponseDTO;
     }
 }

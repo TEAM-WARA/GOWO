@@ -1,5 +1,6 @@
 package dev.gowo.gowo.controller;
 
+import dev.gowo.gowo.dto.CategoryResponseDTO;
 import dev.gowo.gowo.dto.PrescriptionGuideDTO;
 import dev.gowo.gowo.service.ToolService;
 import org.slf4j.Logger;
@@ -35,6 +36,11 @@ public class ToolController {
             @RequestParam("tool") String tool
     ){
         return toolService.getByToolName(tool);
+    }
+
+    @GetMapping("/category")
+    public CategoryResponseDTO readByToolCategory(){
+        return toolService.getByDistinctTool();
     }
 
 }

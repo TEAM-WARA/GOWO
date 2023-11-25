@@ -1,6 +1,7 @@
 package dev.gowo.gowo.service.impl;
 
 import dev.gowo.gowo.dao.PrescriptionGuideDAO;
+import dev.gowo.gowo.dto.CategoryResponseDTO;
 import dev.gowo.gowo.dto.PrescriptionGuideDTO;
 import dev.gowo.gowo.entity.PrescriptionGuideEntity;
 import dev.gowo.gowo.service.ToolService;
@@ -43,5 +44,14 @@ public class ToolServiceImpl implements ToolService {
                             .build());
         }
         return ResponseEntity.status(200).body(result);
+    }
+
+    @Override
+    public CategoryResponseDTO getByDistinctTool() {
+        List<String> category = prescriptionGuideDAO.getByDistinctTool();
+        CategoryResponseDTO categoryResponseDTO = CategoryResponseDTO.builder()
+                .category(category)
+                .build();
+        return categoryResponseDTO;
     }
 }

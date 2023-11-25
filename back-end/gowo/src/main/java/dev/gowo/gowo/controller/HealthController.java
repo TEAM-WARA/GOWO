@@ -1,5 +1,6 @@
 package dev.gowo.gowo.controller;
 
+import dev.gowo.gowo.dto.CategoryResponseDTO;
 import dev.gowo.gowo.dto.PrescriptionGuideDTO;
 import dev.gowo.gowo.service.HealthService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,11 @@ public class HealthController {
             @RequestParam("health") String health
     ){
         return this.healthService.getChoiceByHealth(health);
+    }
+
+    @GetMapping("/category")
+    public CategoryResponseDTO readByHealthCategory(){
+        return healthService.getByDistinctHealth();
     }
 
 

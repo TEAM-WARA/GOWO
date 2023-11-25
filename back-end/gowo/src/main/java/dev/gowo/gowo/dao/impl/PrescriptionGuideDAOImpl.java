@@ -49,5 +49,18 @@ public class PrescriptionGuideDAOImpl implements PrescriptionGuideDAO {
         }
     }
 
+    @Override
+    public List<String> getByDistinctTool() {
+        return prescriptionGuideRepository.findDistinctTool();
+    }
 
+    @Override
+    public List<String> getByDistinctPlace() {
+        return prescriptionGuideRepository.findDistinctPlace();
+    }
+
+    @Override
+    public List<String> getByDistinctHealth() {
+        return prescriptionGuideRepository.findDistinctHealth();
+    }
 }
