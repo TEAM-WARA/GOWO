@@ -1,9 +1,14 @@
 import React, { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom"; //router 사용
 import { Button } from '../button/Button';
+import { AnotherButton } from '../button/Button';
 import './MyPage.css';
 
 function MyPage() {
+
+    const navigate = useNavigate();
     //버튼 
+
     const [button] = useState(true);
 
     //회원번호 입력 
@@ -18,8 +23,12 @@ function MyPage() {
         })
     }
 
+
+    // 확인 시 나오는 페이지
     const handleSubmit = () => {
         console.log(state);
+        navigate("/NewRoutine");
+        console.log("hi");
     }
 
     //라디오 박스
@@ -58,7 +67,6 @@ function MyPage() {
                             name="author"
                             value={state.author}
                             onChange={handleChangeState}
-
                         />
                     </li>
                     <li className='usercheck-button'>{button && <Button buttonStyle='btn--outline' onClick={handleSubmit}>로그인</Button>}</li>
@@ -201,11 +209,10 @@ function MyPage() {
                             name="author"
                             value={state.author}
                             onChange={handleChangeState}
-
                         />
                     </li>
-                    <li className='usercheck-button'>{button && <Button buttonStyle='btn--outline' onClick={handleSubmit}>아이디 확인</Button>}</li>
-                    <li className='usercheck-button'>{button && <Button buttonStyle='btn--outline' onClick={handleSubmit}>로그인</Button>}</li>
+                    <li className='usercheck-button'>{button && <AnotherButton buttonStyle='btn--outline' onClick={handleSubmit}>아이디 확인</AnotherButton>}</li>
+                    <li className='usercheck-button'>{button && <AnotherButton buttonStyle='btn--outline' onClick={handleSubmit}>로그인</AnotherButton>}</li>
                 </ul>
             </nav>
         </>

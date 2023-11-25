@@ -4,15 +4,17 @@ import MyPage from "./pages/mypage/MyPage";
 import Main from "./pages/Main/Main";
 import Card from "./pages/card/Cards"
 import Navbar from "./pages/Nav-Bar/NavBar";
+import NewRoutine from "./pages/CreateRoutine/NewRoutine";
 
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
+      <Navbar/>
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/mypage" element={<MyPage/>}/>
+        <Route path="/Mypage" element={<MyPage/>}/>
         <Route path="/Cards" element={<Card/>}/>
+        <Route path="/NewRoutine" element={<NewRoutine/>}/>
       </Routes> 
     </BrowserRouter>
   );

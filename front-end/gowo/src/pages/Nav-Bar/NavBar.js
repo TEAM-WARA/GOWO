@@ -5,11 +5,8 @@ import './NavBar.css';
 
 function Navbar() {
     const [click, setClick] = useState(false);
-
     const handleClick = () => setClick(!click);  //클릭할때마다 전환()
     const closeMobileMenu = () => setClick(false);
-
-
 
     return (
         <>
@@ -49,7 +46,7 @@ function Navbar() {
 
                         </li>
                         <li className='nav-item'>
-                            <Link to='/mypage' className='nav-links' onClick={closeMobileMenu}>
+                            <Link to='/Mypage' className='nav-links' onClick={closeMobileMenu}>
                                 나의 루틴
                             </Link>
                         </li>

@@ -5,6 +5,10 @@ import './HeroSection.css';
 
 
 function HeroSection() {
+    function handleClick() {
+        console.log("hi");
+    }
+
     return (
         <div className = 'hero-container'>
             <video src="/videos/video-2.mp4" autoPlay loop muted />
@@ -12,7 +16,7 @@ function HeroSection() {
             <p>What are you waiting for?</p>
             <div className="hero-btns">
                 <Button className = 'btns' buttonStyle = 'btn--outline' 
-                buttonSize = 'btn--large'>Start</Button>
+                buttonSize = 'btn--large' onClick={handleClick}>Start</Button>
                  <Button className = 'btns' buttonStyle = 'btn--primary' 
                 buttonSize = 'btn--large'> SIGN UP <i className = 'far fa-play-circle'/></Button>
             </div>
