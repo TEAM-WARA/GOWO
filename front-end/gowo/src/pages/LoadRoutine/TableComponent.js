@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 import CardItem from "../card/Carditem";
 import "./MyRoutine.css";
 
 export default function TableComponent() {
-  const location = useLocation();
-  // const author = location.state.author;
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -17,31 +14,38 @@ export default function TableComponent() {
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
+  const renderButton = (j, i) => {
+    // Add your button rendering logic here
+  };
+
+  const numCols = data.length;
+
   return (
     <table id="jb-table">
       <thead>
         <tr>
           <th>운동종류</th>
-          {data.map((item, i) => (
+          {Array.from({ length: numCols }).map((_, i) => (
             <th key={i}>{i + 1 + "일"}</th>
           ))}
         </tr>
       </thead>
       <tbody>
-        {["준비운동", "메인 운동", "마무리 운동"].map((value, i) => (
+        {["preWorkOut", "mainWorkOut", "finishWorkOut"].map((value, i) => (
           <tr key={i}>
             <td>{value}</td>
-            {data.map((item, j) => (
+            {Array.from({ length: numCols }).map((_, j) => (
               <td key={j}>
-                {item[value].map((innerValue, innerIndex) => (
+                {data[j][value].map((innerValue, innerIndex) => (
                   <CardItem
-                    key={i + "-" + innerIndex} // i 는 준비운동, 메인운동, 마무리운동, innerIndex는 각 운동들
+                    key={i + "-" + innerIndex}
                     src={innerValue.imageUrl}
                     text={innerValue.workOutName}
-                    label={innerValue.workOutDescription}
+                    label={innerValue.health}
                     video={innerValue.videoUrl}
                   />
                 ))}
+                {renderButton(j, i)}
               </td>
             ))}
           </tr>
