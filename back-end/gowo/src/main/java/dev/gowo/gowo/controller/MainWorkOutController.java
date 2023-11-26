@@ -22,11 +22,20 @@ public class MainWorkOutController {
         this.mainWorkOutService = mainWorkOutService;
     }
 
+//    @GetMapping()
+//    public ResponseEntity<List<PrescriptionGuideDTO>> readMainWorkOut(
+//            @RequestBody MainWorkOutDTO mainWorkOutDTO
+//            ){
+//        return this.mainWorkOutService.getChoiceByMainWorkOut(mainWorkOutDTO.getHealth(), mainWorkOutDTO.getTool(), mainWorkOutDTO.getPlace());
+//    }
+
     @GetMapping()
-    public ResponseEntity<List<PrescriptionGuideDTO>> readMainWorkOut(
-            @RequestBody MainWorkOutDTO mainWorkOutDTO
-            ){
-        return this.mainWorkOutService.getChoiceByMainWorkOut(mainWorkOutDTO.getHealth(), mainWorkOutDTO.getTool(), mainWorkOutDTO.getPlace());
+    public ResponseEntity<List<PrescriptionGuideDTO>> readAllMainWorkOut(
+            @RequestParam String health,
+            @RequestParam String tool,
+            @RequestParam String place
+    ){
+        return this.mainWorkOutService.getChoiceByMainWorkOut(health, tool, place);
     }
 
 }
