@@ -1,0 +1,36 @@
+table#jb-table th, table#jb-table td { padding: 20px 80px; border: 1px solid #444444; }
+table#jb-table th { background-color: #eeeeee; }
+table#jb-table tbody tr td:first-child { background-color: #eeeeee; }
+
+#jb-table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .Modal{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 50%; /* 상단에서 50% 위치에 배치합니다 */
+    left: 50%; /* 좌측에서 50% 위치에 배치합니다 */
+    transform: translate(-50%, -50%); /* 위치를 조정하여 정확히 중앙에 배치합니다 */
+    border: 1px solid #cccccc58;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.098);
+    overflow: hidden;
+    background-color: white;
+    gap: 10px; 
+}
+
+.changeOption {
+  border-radius: 5px;
+  background-color: #f5f5f5;
+  cursor: pointer;
+  border: none;
+}

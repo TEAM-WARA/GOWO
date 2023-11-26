@@ -29,8 +29,8 @@ const Login = () => {
         // 서버에서의 응답 처리
         if (data) {
           // 비밀번호가 일치하면 다음 페이지로 전달해야함 
-          navigate(`/Routine?password=${username}`);
-          <Route path="/Routine" element={<Routine/>}/>
+          navigate(`/MyRoutine?password=${username}`);
+          // <Route path="/MyRoutine" element={<Routine/>}/>
         } 
       })
       .catch(error => {

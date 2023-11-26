@@ -22,7 +22,7 @@ function MyPage() {
         };
 
         // 다른 페이지로 이동하면서 상태를 전달
-        navigate("/routine", { state: { routineData } });
+        navigate("/NewRoutine", { state: { routineData } });
     };
 
     //라디오 박스
