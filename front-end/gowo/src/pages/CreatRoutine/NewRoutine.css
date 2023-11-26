@@ -10,7 +10,7 @@ table#jb-table tbody tr td:first-child { background-color: #eeeeee; }
   }
 
   .Modal{
-    width: 20%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;

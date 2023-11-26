@@ -37,7 +37,7 @@ return (
             {Array.isArray(col[i]) ? 
               col[i].map((innerValue, innerIndex) => (
                 <CardItem
-                  key={i + "-" + innerIndex}
+                  key={i + "-" + innerIndex}  // i 는 준비운동, 메인운동, 마무리운동, innerIndex는 각 운동들
                   src={i}
                   text={innerValue}
                   label={i + "-" + innerIndex}

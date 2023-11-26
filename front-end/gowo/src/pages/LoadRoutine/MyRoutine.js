@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AnotherButton, Button } from '../button/Button';
 import './MyRoutine.css';
 import TableComponent from './TableComponent';
@@ -22,6 +22,24 @@ export default function MyRoutine() {
             </tbody>
         </table>
     ));
+
+    // useEffect(() => {
+    //     // API에서 데이터 가져오기
+    //     fetch('https://port-0-gowo-12fhqa2llodwi7b3.sel5.cloudtype.app/routine?passoword={비밀번호}')
+    //         .then(response => {
+    //             if (!response.ok) {
+    //                 throw new Error(`HTTP error! Status: ${response.status}`);
+    //             }
+    //             return response.json();
+    //         })
+    //         .then(apiData => {
+    //             console.log('Fetched data:', apiData);
+    //             setData(apiData.data);
+    //         })
+    //         .catch(error => {
+    //             console.error('Error fetching data:', error);
+    //         });
+    // }, []);
 
 
 
