@@ -1,9 +1,4 @@
 /* Login.css */
-@font-face {
-    font-family: "Light2";
-    font-weight: normal;
-    src: url("../../font/The\ Jamsil\ 2\ Light.ttf") format("truetype");
-}
 
 .login-container {
     max-width: 400px;
@@ -21,7 +16,6 @@
   }
   
   .login-container h2{
-    font-family: 'Light2', sans-serif;
     margin-bottom: 15px; /* 아래에 여백 추가 */
   }
 
