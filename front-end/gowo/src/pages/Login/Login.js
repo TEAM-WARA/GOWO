@@ -29,7 +29,6 @@ const Login = () => {
         // 서버에서의 응답 처리
         if (data) {
           // 비밀번호가 일치하면 다음 페이지로 전달해야함 
-          alert('비밀번호가 일치!!.');
           navigate(`/Routine?password=${username}`);
           <Route path="/Routine" element={<Routine/>}/>
         } 
@@ -51,7 +50,7 @@ const Login = () => {
           value={username}
           onChange={(e) => setUsername(e.target.value)} />
           <button className="routine-button" onClick={handleLoginBtnClick}>
-          루틴
+          내 루틴
         </button>
       </label>
       <div className='button-con'>
