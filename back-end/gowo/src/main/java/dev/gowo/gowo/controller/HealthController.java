@@ -28,9 +28,14 @@ public class HealthController {
 
     @GetMapping()
     public ResponseEntity<List<PrescriptionGuideDTO>> readAllByHealth(
-            @RequestParam("health") String health
+            @RequestParam(value = "health", required = false) String health
     ){
-        return this.healthService.getByHealth(health);
+        if(health != null) {
+            return this.healthService.getByHealth(health);
+        }
+        else{
+            return this.healthService.getAllData();
+        }
     }
 
     @GetMapping("/choice")

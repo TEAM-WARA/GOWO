@@ -55,4 +55,9 @@ public class PurposeRoutineDAOImpl implements PurposeRoutineDAO {
     public List<String> readByDistinctPurposes() {
         return purposeRoutineRepository.findDistinctWorkOutPurpose();
     }
+
+    @Override
+    public List<PurposeRoutineEntity> readAllData() {
+        return this.purposeRoutineRepository.findAll();
+    }
 }

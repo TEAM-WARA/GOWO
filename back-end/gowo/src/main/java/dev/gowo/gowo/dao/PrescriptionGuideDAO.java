@@ -15,4 +15,5 @@ public interface PrescriptionGuideDAO {
     public List<String> getByDistinctTool();
     public List<String> getByDistinctPlace();
     public List<String> getByDistinctHealth();
+    public List<PrescriptionGuideEntity> getAllData();
 }

@@ -54,4 +54,27 @@ public class ToolServiceImpl implements ToolService {
                 .build();
         return categoryResponseDTO;
     }
+
+    @Override
+    public ResponseEntity<List<PrescriptionGuideDTO>> getAllData() {
+        List<PrescriptionGuideDTO> result = new ArrayList<>();
+        List<PrescriptionGuideEntity> entities = this.prescriptionGuideDAO.getAllData();
+
+        for(PrescriptionGuideEntity entity : entities){
+            result.add(
+                    PrescriptionGuideDTO.builder()
+                            .id(entity.getId())
+                            .workOutName(entity.getWorkOutName())
+                            .workOutDescription(entity.getWorkOutDescription())
+                            .imageUrl(entity.getImageUrl())
+                            .videoName(entity.getVideoName())
+                            .startTime(entity.getStartTime())
+                            .videoUrl(entity.getVideoUrl())
+                            .tool(entity.getTool())
+                            .place(entity.getPlace())
+                            .health(entity.getHealth())
+                            .build());
+        }
+        return ResponseEntity.status(200).body(result);
+    }
 }

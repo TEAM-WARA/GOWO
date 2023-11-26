@@ -29,8 +29,14 @@ public class PlaceController {
 
 
     @RequestMapping()
-    public ResponseEntity<List<PrescriptionGuideDTO>> getByPlaceName(@RequestParam("place") String place){
-        return this.placeService.getByPlaceName(place);
+    public ResponseEntity<List<PrescriptionGuideDTO>> getByPlaceName(
+            @RequestParam(value = "place", required = false) String place){
+        if(place != null) {
+            return this.placeService.getByPlaceName(place);
+        }
+        else{
+            return this.placeService.getAllData();
+        }
     }
 
     @GetMapping("/category")

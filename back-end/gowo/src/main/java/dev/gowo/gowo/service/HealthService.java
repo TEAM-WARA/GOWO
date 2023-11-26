@@ -12,4 +12,5 @@ public interface HealthService {
     public ResponseEntity<List<PrescriptionGuideDTO>> getByHealth(String health);
     public ResponseEntity<List<PrescriptionGuideDTO>> getChoiceByHealth(String health);
     public CategoryResponseDTO getByDistinctHealth();
+    public ResponseEntity<List<PrescriptionGuideDTO>> getAllData();
 }

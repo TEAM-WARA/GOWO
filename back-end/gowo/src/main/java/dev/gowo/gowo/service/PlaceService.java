@@ -10,4 +10,5 @@ public interface PlaceService {
 
     public ResponseEntity<List<PrescriptionGuideDTO>> getByPlaceName(String place);
     public CategoryResponseDTO getByDistinctPlace();
+    public ResponseEntity<List<PrescriptionGuideDTO>> getAllData();
 }

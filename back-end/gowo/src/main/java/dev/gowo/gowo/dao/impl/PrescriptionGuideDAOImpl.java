@@ -68,4 +68,9 @@ public class PrescriptionGuideDAOImpl implements PrescriptionGuideDAO {
     public List<String> getByDistinctHealth() {
         return prescriptionGuideRepository.findDistinctHealth();
     }
+
+    @Override
+    public List<PrescriptionGuideEntity> getAllData() {
+        return this.prescriptionGuideRepository.findAll();
+    }
 }

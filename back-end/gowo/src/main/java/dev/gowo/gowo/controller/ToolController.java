@@ -33,9 +33,13 @@ public class ToolController {
      */
     @GetMapping()
     public ResponseEntity<List<PrescriptionGuideDTO>> getToolData(
-            @RequestParam("tool") String tool
+            @RequestParam(value = "tool", required = false) String tool
     ){
-        return toolService.getByToolName(tool);
+        if(tool != null) {
+            return toolService.getByToolName(tool);
+        }else{
+            return toolService.getAllData();
+        }
     }
 
     @GetMapping("/category")

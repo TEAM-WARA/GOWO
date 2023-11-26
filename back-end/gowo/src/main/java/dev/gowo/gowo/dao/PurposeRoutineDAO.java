@@ -14,4 +14,5 @@ public interface PurposeRoutineDAO {
     public List<String> readByDistinctAreas();
     public List<String> readByDistinctDivisions();
     public List<String> readByDistinctPurposes();
+    public List<PurposeRoutineEntity> readAllData();
 }
