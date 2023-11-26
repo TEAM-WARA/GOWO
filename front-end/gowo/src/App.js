@@ -9,11 +9,13 @@ import Routine from "./pages/mypage/routine"
 import CardTool from "./pages/card/CardTool"
 import CardGoal from "./pages/card/CardGoal"
 
+import MyRoutine from "./pages/LoadRoutine/MyRoutine";
+import NewRoutine from "./pages/CreatRoutine/NewRoutine";
 
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
+      <Navbar/>
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/Mypage" element={<MyPage/>}/>
@@ -22,6 +24,9 @@ function App() {
         <Route path="/CardGoal" element={<CardGoal/>}/>
         <Route path="/Login" element={<Login/>}/>
         <Route path="/Routine" element={<Routine/>}/>
+        {/* <Route path="/Cards" element={<Card/>}/> */}
+        <Route path="/MyRoutine" element={<MyRoutine/>}/>
+        <Route path="/NewRoutine" element={<NewRoutine/>}/>
       </Routes> 
     </BrowserRouter>
   );

@@ -9,9 +9,9 @@ const Routine = () => {
   useEffect(() => {
     // password 값 사용 예시
     console.log('Received password:', password);
-    console.log("Routine 페이지에서 전달된 상태:", location.state?.routineData);
+    console.log("Routine 페이지에서 전달된 상태:", routineData);
     // 여기서 password 값으로 할 수 있는 작업을 수행
-  }, [password,location.state]);
+  }, [password,routineData]);
 
   return (
     <div>

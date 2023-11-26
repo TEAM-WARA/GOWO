@@ -5,7 +5,6 @@ import './NavBar.css';
 
 function Navbar() {
     const [click, setClick] = useState(false);
-
     const handleClick = () => setClick(!click);  //클릭할때마다 전환()
     const closeMobileMenu = () => setClick(false);
 

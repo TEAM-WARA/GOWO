@@ -45,24 +45,6 @@ export const ViewBtn = ({children, type, onClick, buttonStyle, buttonSize}) => {
   );
 };
 
-// 새로운 버튼 회원가입 버튼 
-export const AnotherButton = ({ children, type, onClick, buttonStyle, buttonSize, to }) => {
-    const checkButtonStyle = STYLES.includes(buttonStyle) ? buttonStyle : STYLES[0];
-    const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0];
-  
-    return (
-      <Link to='/join' className='btn-mobile'>
-        <button
-          className={`btn ${checkButtonStyle} ${checkButtonSize}`}
-          onClick={onClick}
-          type={type}
-        >
-          {children}
-        </button>
-      </Link>
-    );
-  };
-
   export const GoSurveyBtn = ({children, type, onClick, buttonStyle, buttonSize}) => {
     // buttonstyle이 따로 지정되지 않으면 가장 기본인 배열의 0번째가 설정된다. 
     const checkButtonStyle = STYLES.includes(buttonStyle) ? buttonStyle : STYLES[0];
@@ -79,7 +61,7 @@ export const AnotherButton = ({ children, type, onClick, buttonStyle, buttonSize
             >
                 {children} 
             </button>
-        </Link>
+         </Link>
     );
 };
 
@@ -122,3 +104,18 @@ export const LoginBtn = ({children, type, onClick, buttonStyle, buttonSize}) => 
       //</Link>
   );
 }
+// 새로운 버튼 회원가입 버튼 
+export const AnotherButton = ({ children, type, onClick, buttonStyle, buttonSize, to }) => {
+    const checkButtonStyle = STYLES.includes(buttonStyle) ? buttonStyle : STYLES[0];
+    const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0];
+  
+    return (
+        <button
+          className={`btn ${checkButtonStyle} ${checkButtonSize}`}
+          onClick={onClick}
+          type={type}
+        >
+          {children}
+        </button>
+    );
+  };
