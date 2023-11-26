@@ -1,36 +1,67 @@
 import React, { useState } from 'react';
+import './Login.css'; // CSS 파일 임포트
+import { GoSurveyBtn } from "../button/Button"
+import { Route, useNavigate } from 'react-router-dom'; // useNavigate로 변경
+import Routine from "../mypage/routine"
 
 const Login = () => {
+  const [button] = useState(true);
   const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  //회원번호 입력 
+  const navigate = useNavigate(); // useNavigate 사용
 
-  const handleLogin = () => {
-    // 간단한 로그인 확인을 수행하는 코드
-    if (username === 'user' && password === 'password') {
-      alert('로그인 성공!');
-    } else {
-      alert('로그인 실패!');
-    }
+  const handleLoginBtnClick = () => {
+    console.log('입력한 비밀번호:',username); //콘솔에 입력한 값 출력 
+    // 서버 URL
+    const serverUrl = 'https://port-0-gowo-12fhqa2llodwi7b3.sel5.cloudtype.app'; // 실제 서버 URL로 변경
+
+    // 서버에 POST 요청 보내기
+    fetch(`${serverUrl}/routine/password?password=${username}`,
+    {method:"POST"})
+    .then(response => {
+      // 응답이 JSON 형식인지 확인
+      if (!response.ok) {
+        throw new Error('서버 응답이 올바르지 않습니다.');
+      }
+      return response.json();
+    })
+      .then(data => {
+        // 서버에서의 응답 처리
+        if (data) {
+          // 비밀번호가 일치하면 다음 페이지로 전달해야함 
+          alert('비밀번호가 일치!!.');
+          navigate(`/Routine?password=${username}`);
+          <Route path="/Routine" element={<Routine/>}/>
+        } 
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('비밀번호가 일치하지 않습니다.');
+      });
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form>
-        <label>
-          Username:
-          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Password:
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        </label>
-        <br />
-        <button type="button" onClick={handleLogin}>
-          로그인
+    <div className="login-container">
+      <h2>회원이신가요?</h2>
+      <label className='login-label'>
+
+        <input
+          type="text"
+          placeholder="Password"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)} />
+          <button className="routine-button" onClick={handleLoginBtnClick}>
+          루틴
         </button>
-      </form>
+      </label>
+      <div className='button-con'>
+        
+      </div> 
+      <div className='button-con'>
+        {button && <GoSurveyBtn buttonStyle='btn--outline' className="routine-button" >새로운 루틴 만들기</GoSurveyBtn>}
+      </div>
+
+
     </div>
   );
 };

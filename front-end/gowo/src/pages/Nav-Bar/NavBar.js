@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useRef } from "react";
+import React, { useState} from 'react';
+//import { useRef } from "react";
 import { Link } from 'react-router-dom'; //router 사용 
 import './NavBar.css';
 
@@ -8,8 +8,6 @@ function Navbar() {
 
     const handleClick = () => setClick(!click);  //클릭할때마다 전환()
     const closeMobileMenu = () => setClick(false);
-
-
 
     return (
         <>
@@ -25,31 +23,25 @@ function Navbar() {
                     </div>
                     <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                     <li className='nav-item'>
-                            <Link to='/products' className='nav-links' onClick={closeMobileMenu}>
+                            <Link to='/CardPlace' className='nav-links' onClick={closeMobileMenu}>
                                 운동 장소
                             </Link>
 
                         </li>
                         <li className='nav-item'>
-                            <Link to='/products' className='nav-links' onClick={closeMobileMenu}>
-                                운동 부위
-                            </Link>
-
-                        </li>
-                        <li className='nav-item'>
-                            <Link to='/cards' className='nav-links' onClick={closeMobileMenu}>
+                            <Link to='/CardTool' className='nav-links' onClick={closeMobileMenu}>
                                 운동 도구
                             </Link>
 
                         </li>
                         <li className='nav-item'>
-                            <Link to='/products' className='nav-links' onClick={closeMobileMenu}>
+                            <Link to='/CardGoal' className='nav-links' onClick={closeMobileMenu}>
                                 운동 목적
                             </Link>
 
                         </li>
                         <li className='nav-item'>
-                            <Link to='/mypage' className='nav-links' onClick={closeMobileMenu}>
+                            <Link to='/Login' className='nav-links' onClick={closeMobileMenu}>
                                 나의 루틴
                             </Link>
                         </li>

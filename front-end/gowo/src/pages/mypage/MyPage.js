@@ -1,26 +1,29 @@
 import React, { useState } from "react";
-import { Button } from '../button/Button';
 import './MyPage.css';
+import { useNavigate } from "react-router-dom";
 
 function MyPage() {
-    //버튼 
-    const [button] = useState(true);
+    const navigate = useNavigate(); //루틴 페이지로 넘기기 위한 데이터
 
-    //회원번호 입력 
-    const [state, setState] = useState({
-        author: "",
-    })
+    const handleRoutineCreate = () => {
+        if (!genderOption || !ageOption || !locationOption || !equipmentOption || !exerciseOptions.length || !countOption) {
+            alert("설문조사를 모두 완료해주세요");
+            return;
+        }
+        // 루틴 만들기 버튼을 클릭했을 때 실행되는 함수
+        // 선택된 라디오 박스와 체크 박스의 값을 Routine 페이지로 전달
+        const routineData = {
+            gender: genderOption,
+            age: ageOption,
+            location: locationOption,
+            equipment: equipmentOption,
+            exerciseOptions: exerciseOptions,
+            count: countOption
+        };
 
-    const handleChangeState = (e) => {
-        setState({
-            ...state,
-            [e.target.name]: e.target.value,
-        })
-    }
-
-    const handleSubmit = () => {
-        console.log(state);
-    }
+        // 다른 페이지로 이동하면서 상태를 전달
+        navigate("/routine", { state: { routineData } });
+    };
 
     //라디오 박스
     const [genderOption, setGenderOption] = useState("");
@@ -33,11 +36,6 @@ function MyPage() {
         setAgeOption(e.target.value);
     };
 
-    const [exerciseOption, setExerciseOption] = useState("");
-    const handleExerciseChange = (e) => {
-        setExerciseOption(e.target.value);
-    };
-
     const [locationOption, setLocationOption] = useState("");
     const handleLocationChange = (e) => {
         setLocationOption(e.target.value);
@@ -48,22 +46,26 @@ function MyPage() {
         setEquipmentOption(e.target.value);
     };
 
+    const [countOption, setCountOption] = useState("");
+    const handleCountChange = (e) => {
+        setCountOption(e.target.value);
+    };
+
+    const [exerciseOptions, setExerciseOptions] = useState([]);
+
+const handleExerciseChange = (e) => {
+    const value = e.target.value;
+    if (exerciseOptions.includes(value)) {
+        // 이미 선택된 경우, 제거
+        setExerciseOptions(exerciseOptions.filter(option => option !== value));
+    } else {
+        // 선택되지 않은 경우, 추가
+        setExerciseOptions([...exerciseOptions, value]);
+    }
+};
+
     return (
         <>
-            <nav className="check-user-text">
-                <ul>
-                    <li className="mypagetext">회원이신가요? </li>
-                    <li className="input-userid">
-                        <input
-                            name="author"
-                            value={state.author}
-                            onChange={handleChangeState}
-
-                        />
-                    </li>
-                    <li className='usercheck-button'>{button && <Button buttonStyle='btn--outline' onClick={handleSubmit}>로그인</Button>}</li>
-                </ul>
-            </nav>
             <div className="sur-section">
                 <div className="survey">
                     <ul className="survey-question">
@@ -97,52 +99,49 @@ function MyPage() {
                             <label>
                                 <input className="FormCheckLeft"
                                     type="radio"
-                                    value="10대"
-                                    checked={ageOption === "10대"}
+                                    value="10-20대"
+                                    checked={ageOption === "10-20대"}
                                     onChange={handleAgeChange}
                                 />
-                                <span className="FormCheckText">10대</span>
+                                <span className="FormCheckText">10-20대</span>
                             </label>
                         </li>
                         <li>
                             <label>
                                 <input className="FormCheckLeft"
                                     type="radio"
-                                    value="20대"
-                                    checked={ageOption === "20대"}
+                                    value="30-40대"
+                                    checked={ageOption === "30-40대"}
                                     onChange={handleAgeChange}
                                 />
-                                <span className="FormCheckText">20대</span>
+                                <span className="FormCheckText">30-40대</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input className="FormCheckLeft"
+                                    type="radio"
+                                    value="50-60대"
+                                    checked={ageOption === "50-60대"}
+                                    onChange={handleAgeChange}
+                                />
+                                <span className="FormCheckText">50-60대</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input className="FormCheckLeft"
+                                    type="radio"
+                                    value="70대 이상"
+                                    checked={ageOption === "70대 이상"}
+                                    onChange={handleAgeChange}
+                                />
+                                <span className="FormCheckText">70대 이상</span>
                             </label>
                         </li>
                     </ul>
                     <ul className="survey-question">
-                        <li className="survey-text">주로 하고싶은 운동은 무엇입니까?</li>
-                        <li>
-                            <label>
-                                <input className="FormCheckLeft"
-                                    type="radio"
-                                    value="준비운동"
-                                    checked={exerciseOption === "준비운동"}
-                                    onChange={handleExerciseChange}
-                                />
-                                <span className="FormCheckText">준비운동</span>
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input className="FormCheckLeft"
-                                    type="radio"
-                                    value="마무리운동"
-                                    checked={exerciseOption === "마무리운동"}
-                                    onChange={handleExerciseChange}
-                                />
-                                <span className="FormCheckText">마무리운동</span>
-                            </label>
-                        </li>
-                    </ul>
-                    <ul className="survey-question">
-                        <li className="survey-text">어떤 장소를 선호합니까?</li>
+                        <li className="survey-text">주로 운동할 장소를 선택해주세요</li>
                         <li>
                             <label>
                                 <input className="FormCheckLeft"
@@ -165,9 +164,21 @@ function MyPage() {
                                 <span className="FormCheckText">실내</span>
                             </label>
                         </li>
+
+                        <li>
+                            <label>
+                                <input className="FormCheckLeft"
+                                    type="radio"
+                                    value="헬스장"
+                                    checked={locationOption === "헬스장"}
+                                    onChange={handleLocationChange}
+                                />
+                                <span className="FormCheckText">헬스장</span>
+                            </label>
+                        </li>
                     </ul>
                     <ul className="survey-question">
-                        <li className="survey-text">운동기구를 사용합니까?</li>
+                        <li className="survey-text">운동 기구 및 소도구를 사용합니까?</li>
                         <li>
                             <label>
                                 <input className="FormCheckLeft"
@@ -191,21 +202,191 @@ function MyPage() {
                             </label>
                         </li>
                     </ul>
+                    <ul className="survey-question">
+                        <li className="survey-text">운동 목적을 선택해주세요. (다중 선택 가능)</li>
+                        <li>
+                            <label>
+                                <input className="FormCheckLeft"
+                                    type="checkbox"
+                                    value="근력"
+                                    checked={exerciseOptions.includes("근력")}
+                                    onChange={handleExerciseChange}
+                                />
+                                <span className="FormCheckText">근력</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input className="FormCheckLeft"
+                                    type="checkbox"
+                                    value="민첩성"
+                                    checked={exerciseOptions.includes("민첩성")}
+                                    onChange={handleExerciseChange}
+                                />
+                                <span className="FormCheckText">민첩성</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input className="FormCheckLeft"
+                                    type="checkbox"
+                                    value="순발력"
+                                    checked={exerciseOptions.includes("순발력")}
+                                    onChange={handleExerciseChange}
+                                />
+                                <span className="FormCheckText">순발력</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input className="FormCheckLeft"
+                                    type="checkbox"
+                                    value="심폐지구력"
+                                    checked={exerciseOptions.includes("심폐지구력")}
+                                    onChange={handleExerciseChange}
+                                />
+                                <span className="FormCheckText">심폐지구력</span>
+                            </label>
+                        </li>
+                    </ul>
+                    <ul>
+                    <li className="survey-text"></li>
+                        <li>
+                            <label>
+                                <input className="FormCheckLeft"
+                                    type="checkbox"
+                                    value="유연성"
+                                    checked={exerciseOptions.includes("유연성")}
+                                    onChange={handleExerciseChange}
+                                />
+                                <span className="FormCheckText">유연성</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input className="FormCheckLeft"
+                                    type="checkbox"
+                                    value="평형성"
+                                    checked={exerciseOptions.includes("평형성")}
+                                    onChange={handleExerciseChange}
+                                />
+                                <span className="FormCheckText">평형성</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input className="FormCheckLeft"
+                                    type="checkbox"
+                                    value="협응력"
+                                    checked={exerciseOptions.includes("협응력")}
+                                    onChange={handleExerciseChange}
+                                />
+                                <span className="FormCheckText">협응력</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input className="FormCheckLeft"
+                                    type="checkbox"
+                                    value="유산소"
+                                    checked={exerciseOptions.includes("유산소")}
+                                    onChange={handleExerciseChange}
+                                />
+                                <span className="FormCheckText">유산소</span>
+                            </label>
+                        </li>
+                    </ul>
+                    <ul className="survey-question">
+                        <li className="survey-text">일주일에 몇회 운동을 선호하시나요?</li>
+                        <li>
+                            <label>
+                                <input className="FormCheckLeft"
+                                    type="radio"
+                                    value="1회"
+                                    checked={countOption === "1회"}
+                                    onChange={handleCountChange}
+                                />
+                                <span className="FormCheckText">1회</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input className="FormCheckLeft"
+                                    type="radio"
+                                    value="2회"
+                                    checked={countOption === "2회"}
+                                    onChange={handleCountChange}
+                                />
+                                <span className="FormCheckText">2회</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input className="FormCheckLeft"
+                                    type="radio"
+                                    value="3회"
+                                    checked={countOption === "3회"}
+                                    onChange={handleCountChange}
+                                />
+                                <span className="FormCheckText">3회</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input className="FormCheckLeft"
+                                    type="radio"
+                                    value="4회"
+                                    checked={countOption === "4회"}
+                                    onChange={handleCountChange}
+                                />
+                                <span className="FormCheckText">4회</span>
+                            </label>
+                        </li>
+                    </ul>
+                    <ul>
+                    <li className="survey-text"></li>
+                        <li>
+                            <label>
+                                <input className="FormCheckLeft"
+                                    type="radio"
+                                    value="5회"
+                                    checked={countOption === "5회"}
+                                    onChange={handleCountChange}
+                                />
+                                <span className="FormCheckText">5회</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input className="FormCheckLeft"
+                                    type="radio"
+                                    value="6회"
+                                    checked={countOption === "6회"}
+                                    onChange={handleCountChange}
+                                />
+                                <span className="FormCheckText">6회</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input className="FormCheckLeft"
+                                    type="radio"
+                                    value="7회"
+                                    checked={countOption === "7회"}
+                                    onChange={handleCountChange}
+                                />
+                                <span className="FormCheckText">7회</span>
+                            </label>
+                        </li>
+                        
+                    </ul>
                 </div>
             </div>
-            <nav className="check-user-text">
+            <nav className="create-user-text-bottom">
                 <ul>
-                    <li className="mypagetext">원하는 회원번호를 적어주세요 </li>
-                    <li className="input-userid">
-                        <input
-                            name="author"
-                            value={state.author}
-                            onChange={handleChangeState}
-
-                        />
-                    </li>
-                    <li className='usercheck-button'>{button && <Button buttonStyle='btn--outline' onClick={handleSubmit}>아이디 확인</Button>}</li>
-                    <li className='usercheck-button'>{button && <Button buttonStyle='btn--outline' onClick={handleSubmit}>로그인</Button>}</li>
+                    <li className='usercheck-button'>
+                        <button className="make-routineBtn" onClick={handleRoutineCreate}>루틴 만들기</button>
+                        </li>
                 </ul>
             </nav>
         </>

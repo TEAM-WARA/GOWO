@@ -1,0 +1,68 @@
+/* Login.css */
+@font-face {
+    font-family: "Light2";
+    font-weight: normal;
+    src: url("../../font/The\ Jamsil\ 2\ Light.ttf") format("truetype");
+}
+
+.login-container {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50vh; /* 100% 뷰포트 높이 */
+    margin-top: 100px;
+  }
+  
+  .login-container h2{
+    font-family: 'Light2', sans-serif;
+    margin-bottom: 15px; /* 아래에 여백 추가 */
+  }
+
+  .login-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 80%;
+  }
+  
+  input {
+    width: 80%;
+    height: 80%;
+    padding: 8px;
+    margin-right: 10px;
+    box-sizing: border-box;
+  }
+  
+.login-container .button-con{
+    margin-top: 15px;
+    
+}
+
+  
+/*버튼 디자인*/
+
+.routine-button{
+    width: 80px;
+    background-color: transparent;
+    color: #242424;
+    padding:8px 20px;
+    border: 2px solid #ccc;
+    transition: all 0.3s ease-out;
+    font-size: 15px;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+}
+.routine-button:hover{
+    background: #242424;
+    color: white;
+    transition: all 0.3s ease-out;
+}

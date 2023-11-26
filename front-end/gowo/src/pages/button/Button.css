@@ -24,6 +24,22 @@
     transition: all 0.3s ease-out;
 }
 
+.btn--MainPage2{
+    background-color: transparent;
+    color: white;
+    padding:8px 20px;
+    border: 1px solid var(--primary);
+    transition: all 0.3s ease-out;
+}
+
+.btn--MainPage1{
+    background-color: transparent;
+    color: white;
+    padding:8px 20px;
+    border: 1px solid var(--primary);
+    transition: all 0.3s ease-out;
+}
+
 .btn-medium {
     padding: 8px 20px;
     font-size: 20px;
@@ -36,10 +52,9 @@
 
 }
 
-
 .btn--medium:hover, 
 .btn--large:hover{
-    background: #242424;
+    background: #000000;
     color: white;
     transition: all 0.3s ease-out;
 

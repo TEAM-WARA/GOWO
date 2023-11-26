@@ -4,19 +4,17 @@
     src: url("../../font/The\ Jamsil\ 2\ Light.ttf") format("truetype");
 }
 
+.mypagetext {
+    /* 위에서 정의한 폰트명 사용 */
+    font-size: 1.2rem;
+}
+
 .check-user-text {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-
     padding: 20px 6rem 20px 6rem;
-}
-
-.mypagetext {
-    font-family: 'Light2', sans-serif;
-    /* 위에서 정의한 폰트명 사용 */
-    font-size: 1.2rem;
 }
 
 .check-user-text ul {
@@ -26,6 +24,27 @@
     align-items: center;
 }
 .check-user-text li {
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+
+.create-user-text-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px 6rem 20px 6rem;
+}
+
+.create-user-text-bottom ul {
+    display: flex;
+    list-style: none;
+    /* 리스트 스타일 제거 */
+    align-items: center;
+}
+.create-user-text-bottom li {
     padding-left: 10px;
     padding-right: 10px;
 
@@ -81,7 +100,6 @@
 }
 /*라디오박스*/
 .survey-text {
-    font-family: 'Light2', sans-serif;
     font-size: 1.2rem;
     width: 100%;
     
@@ -121,3 +139,24 @@
     display: none;
   }
   
+  /*버튼 디자인*/
+  .make-routineBtn{
+    font-weight: bold;
+    width: 150px;
+    height: 50px;
+    background-color: transparent;
+    color: #242424;
+    padding:8px 20px;
+    border: 3px solid #000000;
+    transition: all 0.3s ease-out;
+    font-size: 15px;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .make-routineBtn:hover {
+    background: #242424;
+    color: white;
+    transition: all 0.3s ease-out;
+  }
