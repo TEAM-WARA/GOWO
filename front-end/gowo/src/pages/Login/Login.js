@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './Login.css'; // CSS 파일 임포트
 import { GoSurveyBtn } from "../button/Button"
 import { Route, useNavigate } from 'react-router-dom'; // useNavigate로 변경
-import Routine from "../mypage/routine"
 
 const Login = () => {
   const [button] = useState(true);

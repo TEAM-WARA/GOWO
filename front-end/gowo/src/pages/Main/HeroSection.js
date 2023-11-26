@@ -5,9 +5,6 @@ import './HeroSection.css';
 
 
 function HeroSection() {
-    function handleClick() {
-        console.log("hi");
-    }
 
     return (
         <div className = 'hero-container'>

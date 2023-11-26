@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import CardItem from "../card/Carditem";
 import "./MyRoutine.css";
 
-export default function TableComponent() {
+export default function TableComponent({password}) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     fetch(
-      `https://port-0-gowo-12fhqa2llodwi7b3.sel5.cloudtype.app/routine?password=테스트`
+      `https://port-0-gowo-12fhqa2llodwi7b3.sel5.cloudtype.app/routine?password=${password}`
     )
       .then((response) => response.json())
       .then((apiData) => setData(apiData.data))

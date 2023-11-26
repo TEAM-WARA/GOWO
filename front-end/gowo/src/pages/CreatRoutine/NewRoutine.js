@@ -45,8 +45,7 @@ function NewRoutine() {
 
   return (
     <>
-
-      <NewRoutineComponent impormation={location.state?.routineData}></NewRoutineComponent>
+      <NewRoutineComponent information={routineData}></NewRoutineComponent>
     </>
   );
 }

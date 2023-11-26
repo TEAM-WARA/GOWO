@@ -1,5 +1,4 @@
 import React from "react";
-import "./Cards.css";
 
 function CardItem(props) {
   const openPopup = () => {

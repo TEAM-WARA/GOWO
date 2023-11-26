@@ -18,7 +18,7 @@ function MyPage() {
             location: locationOption,
             equipment: equipmentOption,
             exerciseOptions: exerciseOptions,
-            count: countOption
+            count: Number(countOption)
         };
 
         // 다른 페이지로 이동하면서 상태를 전달
@@ -46,7 +46,7 @@ function MyPage() {
         setEquipmentOption(e.target.value);
     };
 
-    const [countOption, setCountOption] = useState("");
+    const [countOption, setCountOption] = useState();
     const handleCountChange = (e) => {
         setCountOption(e.target.value);
     };
@@ -302,8 +302,8 @@ const handleExerciseChange = (e) => {
                             <label>
                                 <input className="FormCheckLeft"
                                     type="radio"
-                                    value="1회"
-                                    checked={countOption === "1회"}
+                                    value={1}
+                                    checked={Number(countOption) === 1}
                                     onChange={handleCountChange}
                                 />
                                 <span className="FormCheckText">1회</span>
@@ -313,8 +313,8 @@ const handleExerciseChange = (e) => {
                             <label>
                                 <input className="FormCheckLeft"
                                     type="radio"
-                                    value="2회"
-                                    checked={countOption === "2회"}
+                                    value={2}
+                                    checked={Number(countOption) === 2}
                                     onChange={handleCountChange}
                                 />
                                 <span className="FormCheckText">2회</span>
@@ -324,8 +324,8 @@ const handleExerciseChange = (e) => {
                             <label>
                                 <input className="FormCheckLeft"
                                     type="radio"
-                                    value="3회"
-                                    checked={countOption === "3회"}
+                                    value={3}
+                                    checked={Number(countOption) === 3}
                                     onChange={handleCountChange}
                                 />
                                 <span className="FormCheckText">3회</span>
@@ -335,8 +335,8 @@ const handleExerciseChange = (e) => {
                             <label>
                                 <input className="FormCheckLeft"
                                     type="radio"
-                                    value="4회"
-                                    checked={countOption === "4회"}
+                                    value={4}
+                                    checked={Number(countOption) ===4 }
                                     onChange={handleCountChange}
                                 />
                                 <span className="FormCheckText">4회</span>
@@ -349,8 +349,8 @@ const handleExerciseChange = (e) => {
                             <label>
                                 <input className="FormCheckLeft"
                                     type="radio"
-                                    value="5회"
-                                    checked={countOption === "5회"}
+                                    value={5}
+                                    checked={Number(countOption) === 5}
                                     onChange={handleCountChange}
                                 />
                                 <span className="FormCheckText">5회</span>
@@ -360,8 +360,8 @@ const handleExerciseChange = (e) => {
                             <label>
                                 <input className="FormCheckLeft"
                                     type="radio"
-                                    value="6회"
-                                    checked={countOption === "6회"}
+                                    value={6}
+                                    checked={Number(countOption) === 6}
                                     onChange={handleCountChange}
                                 />
                                 <span className="FormCheckText">6회</span>
@@ -371,8 +371,8 @@ const handleExerciseChange = (e) => {
                             <label>
                                 <input className="FormCheckLeft"
                                     type="radio"
-                                    value="7회"
-                                    checked={countOption === "7회"}
+                                    value={7}
+                                    checked={Number(countOption) === 7}
                                     onChange={handleCountChange}
                                 />
                                 <span className="FormCheckText">7회</span>

@@ -3,18 +3,29 @@ import Modal from "react-modal";
 import { AnotherButton } from "../button/Button";
 import CardItem from "../card/Carditem";
 import "./NewRoutine.css";
-import { useLocation } from "react-router";
+import { useNavigate } from "react-router-dom";
 
-export default function NewRoutineComponent( impormation ) {
+export default function NewRoutineComponent({information} ) {
+  const navigate = useNavigate(); //루틴 페이지로 넘기기 위한 데이터
+
   if (process.env.NODE_ENV !== "test") Modal.setAppElement("#root");
-  const numCols = 3; // 열의 수를 결정하는 변수
+
+  const numCols = information.count;
+
+  // useEffect(() => {
+  //   console.log("information.count:", information);
+  //   if (information && information.count) {
+  //     setNumCols(information.count);
+  //   }
+  // }, [information]);
+  // numCols를 의존성 배열에서 제거
 
   const [colIndex, setColIndex] = useState(0); //몇번째 열인지
   const [rowIndex, setRowIndex] = useState(0); //몇번째 줄인지
 
-  var health = "근력";
-  var tool = "사용";
-  var place = "헬스장";
+  var health = information.exerciseOptions[0];
+  var tool = information.equipment === '예' ? '사용' : '미사용';
+  var place = information.location;
 
   //버튼
   const [button] = useState(true);
@@ -42,34 +53,51 @@ export default function NewRoutineComponent( impormation ) {
   );
 
   const handleSubmit = () => {
-    fetch(
-      `https://port-0-gowo-12fhqa2llodwi7b3.sel5.cloudtype.app/routine?password=${state.author}`,
-      {
-        method: "POST",
-        // headers: {
-        //   Authorization: `${token}`,
-        // },
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(asd), // JSON 형태로 변환하여 전송
-      }
-    )
-      // .then((response) => {
-      //   if (response.ok) {
-      //     return response.json();
-      //   }
-      //   throw new Error("네트워크 응답이 실패했습니다.");
-      // })
-      .then((data) => {
-        alert("성공!");
-        console.log(asd);
-        // window.location.reload();
+    // 서버 URL
+    const serverUrl = 'https://port-0-gowo-12fhqa2llodwi7b3.sel5.cloudtype.app'; // 실제 서버 URL로 변경
+
+    // 서버에 POST 요청 보내기
+    fetch(`${serverUrl}/routine/password?password=${state.author}`,
+    {method:"POST"})
+    .then(response => {
+      return response.json();
+    })
+      .then(data => {
+        // 서버에서의 응답 처리
+        if (!data) {
+          fetch(
+            `https://port-0-gowo-12fhqa2llodwi7b3.sel5.cloudtype.app/routine?password=${state.author}`,
+            {
+              method: "POST",
+              // headers: {
+              //   Authorization: `${token}`,
+              // },
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(asd), // JSON 형태로 변환하여 전송
+            }
+          )
+            .then((data) => {
+              alert("저장되었습니다!");
+              console.log("보낸값",asd);
+              navigate("/Login");
+            })
+            .catch((error) => {
+              alert("실패");
+              console.error(error);
+            });
+        } 
+        else{
+          alert('중복된 비밀번호입니다.');
+        }
+        
       })
-      .catch((error) => {
-        alert("실패");
-        console.error(error);
+      .catch(error => {
+        console.error('Error:', error);
+        alert('비밀번호가 일치하지 않습니다.');
       });
+   
     //console.log(state);
   };
 
@@ -286,6 +314,8 @@ export default function NewRoutineComponent( impormation ) {
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
+                  height: "250px",
+                  width: "230px",
                 }}
               >
                 <input
@@ -293,12 +323,14 @@ export default function NewRoutineComponent( impormation ) {
                   checked={selectedItems.includes(item)}
                   onChange={(e) => handleCheckboxChange(e, item)}
                 />
-                <CardItem
+                <div style={{width: "100%",height: "100%"}}>
+                <CardItem 
                   src={item.imageUrl}
                   text={item.workOutName}
                   label={item.health}
                   video={item.videoUrl}
                 />
+                </div>
               </div>
             ))}
         </div>
@@ -338,6 +370,7 @@ export default function NewRoutineComponent( impormation ) {
           </li>
         </ul>
       </nav>
+      <button onClick={()=>{console.log(information.count);}}>dd</button>
     </>
   );
 }

@@ -27,7 +27,7 @@
     width: 80%;
   }
   
-  input {
+  .login-label input {
     width: 80%;
     height: 80%;
     padding: 8px;
