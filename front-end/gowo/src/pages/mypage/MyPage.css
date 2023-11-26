@@ -1,0 +1,162 @@
+@font-face {
+    font-family: "Light2";
+    font-weight: normal;
+    src: url("../../font/The\ Jamsil\ 2\ Light.ttf") format("truetype");
+}
+
+.mypagetext {
+    /* 위에서 정의한 폰트명 사용 */
+    font-size: 1.2rem;
+}
+
+.check-user-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px 6rem 20px 6rem;
+}
+
+.check-user-text ul {
+    display: flex;
+    list-style: none;
+    /* 리스트 스타일 제거 */
+    align-items: center;
+}
+.check-user-text li {
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+
+.create-user-text-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px 6rem 20px 6rem;
+}
+
+.create-user-text-bottom ul {
+    display: flex;
+    list-style: none;
+    /* 리스트 스타일 제거 */
+    align-items: center;
+}
+.create-user-text-bottom li {
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+
+.input-userid {
+    align-items: center;
+    text-align: center;
+}
+
+.input-userid input {
+    border: 2px solid #ccc;
+    /* 테두리 스타일 지정 */
+    border-radius: 10px;
+    /* 테두리를 둥글게 만들기 */
+    padding: 6px;
+    width: 100%;
+    /* 부모 요소 너비에 맞게 설정 */
+}
+
+.usercheck-button {
+    list-style: none;
+    padding: 0;
+}
+
+/*설문조사 페이지*/
+.sur-section {
+    padding: 10px 4rem;
+}
+.survey {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 2px solid #000000;
+    /* 테두리 스타일 지정 */
+    border-radius: 10px;
+    /* 테두리를 둥글게 만들기 */
+    padding: 2rem 0px;
+}
+.survey ul{
+    display: flex;
+    list-style: none;
+    /* 리스트 스타일 제거 */
+    align-items: center;
+    width: 80%;
+    padding: 20px 4rem;
+}
+
+.survey li {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+/*라디오박스*/
+.survey-text {
+    font-size: 1.2rem;
+    width: 100%;
+    
+}
+
+.FormCheckText {
+    font-size: 15px;
+    padding: 0px 10px;
+    width: max-content;
+    height: 35px;
+    background: #e6e6e6;
+    border-radius: 50px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: #777;
+  }
+  
+  /* FormCheckLeft CSS */
+  .FormCheckLeft:checked + .FormCheckText {
+    background: #949fff;
+    color: #fff;
+  }
+  .FormCheckLeft{
+    display: none;
+  }
+  .FormCheckLeft:checked {
+    display: inline-block;
+    background: none;
+    padding: 0px 10px;
+    text-align: center;
+    height: 35px;
+    line-height: 33px;
+    font-weight: 500;
+    display: none;
+  }
+  
+  /*버튼 디자인*/
+  .make-routineBtn{
+    font-weight: bold;
+    width: 150px;
+    height: 50px;
+    background-color: transparent;
+    color: #242424;
+    padding:8px 20px;
+    border: 3px solid #000000;
+    transition: all 0.3s ease-out;
+    font-size: 15px;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .make-routineBtn:hover {
+    background: #242424;
+    color: white;
+    transition: all 0.3s ease-out;
+  }
