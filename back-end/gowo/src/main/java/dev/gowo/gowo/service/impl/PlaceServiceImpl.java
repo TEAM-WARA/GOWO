@@ -51,6 +51,7 @@ public class PlaceServiceImpl implements PlaceService {
     @Override
     public CategoryResponseDTO getByDistinctPlace() {
         List<String> category = prescriptionGuideDAO.getByDistinctPlace();
+        category.add("전체");
         CategoryResponseDTO categoryResponseDTO = CategoryResponseDTO.builder()
                 .category(category)
                 .build();

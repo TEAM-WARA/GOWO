@@ -49,6 +49,7 @@ public class ToolServiceImpl implements ToolService {
     @Override
     public CategoryResponseDTO getByDistinctTool() {
         List<String> category = prescriptionGuideDAO.getByDistinctTool();
+        category.add("전체");
         CategoryResponseDTO categoryResponseDTO = CategoryResponseDTO.builder()
                 .category(category)
                 .build();

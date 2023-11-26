@@ -73,6 +73,7 @@ public class HealthServiceImpl implements HealthService {
     @Override
     public CategoryResponseDTO getByDistinctHealth() {
         List<String> category = prescriptionGuideDAO.getByDistinctHealth();
+        category.add("전체");
         CategoryResponseDTO categoryResponseDTO = CategoryResponseDTO.builder()
                 .category(category)
                 .build();
