@@ -26,6 +26,7 @@ public class CORSConfiguration implements WebMvcConfigurer{
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.addAllowedOrigin("http://127.0.0.1:3000");
+        configuration.addAllowedOrigin("https://goworkout.netlify.app");
         configuration.addAllowedMethod("*");
         configuration.addAllowedHeader("*");
         configuration.setAllowCredentials(true);
