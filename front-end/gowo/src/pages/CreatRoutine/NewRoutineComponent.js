@@ -12,20 +12,12 @@ export default function NewRoutineComponent({information} ) {
 
   const numCols = information.count;
 
-  // useEffect(() => {
-  //   console.log("information.count:", information);
-  //   if (information && information.count) {
-  //     setNumCols(information.count);
-  //   }
-  // }, [information]);
-  // numCols를 의존성 배열에서 제거
-
   const [colIndex, setColIndex] = useState(0); //몇번째 열인지
   const [rowIndex, setRowIndex] = useState(0); //몇번째 줄인지
 
-  var health = information.exerciseOptions[0];
-  var tool = information.equipment === '예' ? '사용' : '미사용';
-  var place = information.location;
+  // var health = information.exerciseOptions[0];
+  // var tool = information.equipment === '예' ? '사용' : '미사용';
+  // var place = information.location;
 
   //버튼
   const [button] = useState(true);
@@ -78,7 +70,7 @@ export default function NewRoutineComponent({information} ) {
               body: JSON.stringify(asd), // JSON 형태로 변환하여 전송
             }
           )
-            .then((data) => {
+            .then(() => {
               alert("저장되었습니다!");
               console.log("보낸값",asd);
               navigate("/Login");
@@ -114,10 +106,6 @@ export default function NewRoutineComponent({information} ) {
   useEffect(() => {
     console.log(data1);
   }, [data1]);
-
-  const data = [
-    //... 데이터 배열
-  ];
 
   const [modalIsOpen, setModalIsOpen] = useState(false); //팝업창 키고끄기
 
@@ -318,7 +306,7 @@ export default function NewRoutineComponent({information} ) {
                   width: "230px",
                 }}
               >
-                <input
+                <input style={{height: "40px", width: "40px"}}
                   type="checkbox"
                   checked={selectedItems.includes(item)}
                   onChange={(e) => handleCheckboxChange(e, item)}
@@ -370,7 +358,6 @@ export default function NewRoutineComponent({information} ) {
           </li>
         </ul>
       </nav>
-      <button onClick={()=>{console.log(information.count);}}>dd</button>
     </>
   );
 }
